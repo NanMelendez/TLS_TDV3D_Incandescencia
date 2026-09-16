@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,8 @@ public class PlayerAim : MonoBehaviour
 	[SerializeField] [Min(0.01f)] private float rayLength = 1.0f;
 	[SerializeField] private Transform origin;
 	[SerializeField] private InputActionReference interactAction;
+	[SerializeField] private CinemachineInputAxisController cmiac;
+	public float mouseSensitivity = 1.0f;
 
 	private RaycastHit lastHit;
 	private bool hasHitSomething;
@@ -35,6 +38,19 @@ public class PlayerAim : MonoBehaviour
 		{
 			Debug.DrawRay(origin.position, rayDirection * rayLength, Color.red);
 			hasHitSomething = false;
+		}
+
+		foreach (var c in cmiac.Controllers)
+		{
+			switch (c.Name)
+			{
+				case "Look X (Pan)":
+					c.Input.Gain = mouseSensitivity;
+					break;
+				case "Look Y (Tilt)":
+					c.Input.Gain = -mouseSensitivity;
+					break;
+			}
 		}
 	}
 

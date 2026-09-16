@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 7023906156934919823}
   - component: {fileID: 4348415415776808130}
   - component: {fileID: 195210035943549697}
+  - component: {fileID: 5339250393738544201}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -222,3 +223,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &5339250393738544201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107552606044743638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4bf83b3db3b7849bc19b8a295b43b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
+  rayLength: 15
+  origin: {fileID: 0}
+  interactAction: {fileID: 1508359596793712226, guid: 873810ac73209ae468ed2348f0f29e38, type: 3}
+  cmiac: {fileID: 0}
+  mouseSensitivity: 2.5
