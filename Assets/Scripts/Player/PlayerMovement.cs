@@ -26,7 +26,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 temp = horizontalDir.normalized * moveSpeed;
-        rb.linearVelocity = new Vector3(temp.x, rb.linearVelocity.y, temp.y);
+       
+        Vector3 moveDirection = (transform.forward * horizontalDir.y + transform.right * horizontalDir.x).normalized;
+
+        
+        Vector3 targetVelocity = moveDirection * moveSpeed;
+
+        
+        rb.linearVelocity = new Vector3(targetVelocity.x, rb.linearVelocity.y, targetVelocity.z);
     }
 }
