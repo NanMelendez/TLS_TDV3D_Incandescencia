@@ -62,7 +62,7 @@ public class PlayerAim : MonoBehaviour
 			if (lastHit.collider.CompareTag("LightInteractable"))
 			{
 				Debug.Log("Interactuando...");
-				lastHit.collider.GetComponent<InteractableToggle>().ToggleLight();
+				lastHit.collider.GetComponent<LightSrcComp>().Toggle();
 			}
 		}
 	}
