@@ -9,6 +9,7 @@ public class PlayerAim : MonoBehaviour
 	[SerializeField] private Transform origin;
 	[SerializeField] private InputActionReference interactAction;
 	[SerializeField] private CinemachineInputAxisController cmiac;
+	[SerializeField] private Transform lookAtTransform;
 	public float mouseSensitivity = 1.0f;
 
 	private RaycastHit lastHit;
@@ -69,6 +70,9 @@ public class PlayerAim : MonoBehaviour
 	private void MatchCameraDirection()
 	{
 		Vector3 camForward = cmiac.transform.forward;
+
+		lookAtTransform.rotation = Quaternion.LookRotation(camForward);
+
 		camForward.y = 0.0f;
 		
 		if (camForward.sqrMagnitude > 0.001f)
