@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.UI;
 
 public class PlayerAim : MonoBehaviour
 {
@@ -52,18 +53,25 @@ public class PlayerAim : MonoBehaviour
 					break;
 			}
 		}
+
+		MatchCameraDirection();
 	}
 
 	private void OnInteractionClick(InputAction.CallbackContext context)
 	{
 		if (hasHitSomething)
 		{
-			// Debug.Log("TAG: " + lastHit.collider.tag);
 			if (lastHit.collider.CompareTag("LightInteractable"))
-			{
-				Debug.Log("Interactuando...");
-				lastHit.collider.GetComponent<LightSrcComp>().Toggle();
-			}
-		}
+                lastHit.collider.GetComponent<LightSrcComp>().Toggle();
+        }
 	}
+
+	private void MatchCameraDirection()
+	{
+		Vector3 camForward = cmiac.transform.forward;
+		camForward.y = 0.0f;
+		
+		if (camForward.sqrMagnitude > 0.001f)
+            transform.rotation = Quaternion.LookRotation(camForward);
+    }
 }

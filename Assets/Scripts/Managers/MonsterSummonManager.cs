@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MonsterSummonManager : MonoBehaviour
 {
-	[SerializeField] private List<LightSrcComp> lights = new();
-	[SerializeField] private float countdown;
+	[SerializeField] [Min(0.0f)] private float countdown;
+    // [SerializeField] private MonsterSpawner monSpawner;
+
+    private List<LightSrcComp> lights = new();
+    private bool monsterHasBeenSummoned = false;
 
 	public float CountdownTimer
 	{
@@ -21,6 +24,12 @@ public class MonsterSummonManager : MonoBehaviour
 	{
 		if (countdown > 0.0f && IsAnyLightOn())
 			countdown = Mathf.Max(countdown - Time.deltaTime, 0.0f);
+
+		if (!monsterHasBeenSummoned && countdown == 0.0f)
+		{
+			SummonMonster();
+			monsterHasBeenSummoned = true;
+		}
 	}
 
 	private bool IsAnyLightOn()
@@ -38,5 +47,11 @@ public class MonsterSummonManager : MonoBehaviour
             }
 
         return var;
+	}
+
+	private void SummonMonster()
+	{
+		Debug.Log("RUN BRO, RUUUUUUUUUUUUUUN!");
+		// monSpawner.spawn();
 	}
 }
