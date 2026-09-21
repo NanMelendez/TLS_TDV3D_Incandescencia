@@ -160,8 +160,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
-  m_SpotAngle: 90
-  m_InnerSpotAngle: 90
+  m_SpotAngle: 70
+  m_InnerSpotAngle: 70
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 195210035943549697}
   - component: {fileID: 5339250393738544201}
   - component: {fileID: 3097066308881540489}
+  - component: {fileID: 3534269328759385228}
   m_Layer: 7
   m_Name: Jugador
   m_TagString: Player
@@ -384,6 +385,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightSrcComp
   lightSrc: {fileID: 122607832939045190}
+--- !u!114 &3534269328759385228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107552606044743638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e1db1ef27d964f48b3a7c317bf760a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  lsc: {fileID: 3097066308881540489}
+  lightToggleAction: {fileID: 6022206818141457609, guid: 873810ac73209ae468ed2348f0f29e38, type: 3}
 --- !u!1 &7091847253898247922
 GameObject:
   m_ObjectHideFlags: 0
