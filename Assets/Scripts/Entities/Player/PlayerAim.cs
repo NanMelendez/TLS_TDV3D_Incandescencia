@@ -64,6 +64,9 @@ public class PlayerAim : MonoBehaviour
 		{
 			if (lastHit.collider.CompareTag("LightInteractable"))
                 lastHit.collider.GetComponent<LightSrcComp>().Toggle();
+
+			if (lastHit.collider.CompareTag("PuzzleButtonInteractable"))
+				lastHit.collider.GetComponent<PuzzleClickableButton>().Activate();
         }
 	}
 
