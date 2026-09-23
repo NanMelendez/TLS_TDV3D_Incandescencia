@@ -15,26 +15,25 @@ public class PuzzleActivationAnswerer : BasePuzzleComponent
 
     private void Update()
     {
-        if (puzzleActivators.All(activator => activator.ComponentIsActive))
-        {
-            if (previousActivationState != isActive)
-            {
+        previousActivationState = isActive;
+        isActive = puzzleActivators.All(activator => activator.ComponentIsActive);
 
-            }
+        if (previousActivationState != isActive)
+        {
+            if (isActive)
+                Activate();
+            else
+                Deactivate();
         }
     }
 
     public override void Activate()
     {
-        base.Activate();
-
         // Activation animation
     }
 
     protected override void Deactivate()
     {
-        base.Deactivate();
-
         // Deactivation animation
     }
 }
