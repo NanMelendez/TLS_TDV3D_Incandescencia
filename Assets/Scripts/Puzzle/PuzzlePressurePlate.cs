@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PuzzlePressureButton : BasePuzzleComponent
+public class PuzzlePressurePlate : BasePuzzleComponent
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private string expectedColliderTag;

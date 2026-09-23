@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterSummonManager : MonoBehaviour
 {
 	[SerializeField] [Min(0.0f)] private float countdown;
-    // [SerializeField] private MonsterSpawner monSpawner;
+    [SerializeField] private MothSpawner spawner;
 
     private List<LightSrcComp> lights = new();
     private bool monsterHasBeenSummoned = false;
@@ -52,6 +52,6 @@ public class MonsterSummonManager : MonoBehaviour
 	private void SummonMonster()
 	{
 		Debug.Log("RUN BRO, RUUUUUUUUUUUUUUN!");
-		// monSpawner.spawn();
+        spawner.Spawn();
 	}
 }

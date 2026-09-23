@@ -283,11 +283,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7023906156934919823}
-  - component: {fileID: 4348415415776808130}
   - component: {fileID: 195210035943549697}
+  - component: {fileID: 8056442747721013404}
+  - component: {fileID: 1455059393603199105}
+  - component: {fileID: 4348415415776808130}
   - component: {fileID: 5339250393738544201}
-  - component: {fileID: 3097066308881540489}
   - component: {fileID: 3534269328759385228}
+  - component: {fileID: 3097066308881540489}
   m_Layer: 7
   m_Name: Jugador
   m_TagString: Player
@@ -312,21 +314,6 @@ Transform:
   - {fileID: 6253134014724479636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4348415415776808130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6107552606044743638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e12d1d178b01a4c9b2058ec64e0aae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveAction: {fileID: -4105092791903252376, guid: 873810ac73209ae468ed2348f0f29e38, type: 3}
-  moveSpeed: 7.5
-  rb: {fileID: 195210035943549697}
 --- !u!54 &195210035943549697
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -354,6 +341,51 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8056442747721013404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107552606044743638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f362ce855a1e41f49aeeeb2a3fb5c750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  cmCamera: {fileID: 0}
+  healthManager: {fileID: 1455059393603199105}
+  movementManager: {fileID: 4348415415776808130}
+  aimManager: {fileID: 5339250393738544201}
+  lightToggleManager: {fileID: 3534269328759385228}
+--- !u!114 &1455059393603199105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107552606044743638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057b7a317b4f22e43b0f86831c1bf502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  health: 1
+--- !u!114 &4348415415776808130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107552606044743638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e12d1d178b01a4c9b2058ec64e0aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  moveAction: {fileID: -4105092791903252376, guid: 873810ac73209ae468ed2348f0f29e38, type: 3}
+  moveSpeed: 7.5
+  rb: {fileID: 195210035943549697}
 --- !u!114 &5339250393738544201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,19 +404,6 @@ MonoBehaviour:
   cmiac: {fileID: 0}
   lookAtTransform: {fileID: 6253134014724479636}
   mouseSensitivity: 2.5
---- !u!114 &3097066308881540489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6107552606044743638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d467df0c60d74124cb03b331c3c9ca54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LightSrcComp
-  lightSrc: {fileID: 122607832939045190}
 --- !u!114 &3534269328759385228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +418,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   lsc: {fileID: 3097066308881540489}
   lightToggleAction: {fileID: 6022206818141457609, guid: 873810ac73209ae468ed2348f0f29e38, type: 3}
+--- !u!114 &3097066308881540489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107552606044743638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d467df0c60d74124cb03b331c3c9ca54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightSrcComp
+  lightSrc: {fileID: 122607832939045190}
 --- !u!1 &7091847253898247922
 GameObject:
   m_ObjectHideFlags: 0

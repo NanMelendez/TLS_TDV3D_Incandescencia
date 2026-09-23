@@ -8,8 +8,11 @@ public class SurfaceReveal : MonoBehaviour
 
     private void Update()
     {
-        mat.SetVector("_SpotPos", spotLight.transform.position);
-        mat.SetVector("_SpotDir", -spotLight.transform.forward);
-        mat.SetFloat("_SpotAngle", spotLight.spotAngle);
+        if (spotLight)
+        {
+            mat.SetVector("_SpotPos", spotLight.transform.position);
+            mat.SetVector("_SpotDir", -spotLight.transform.forward);
+            mat.SetFloat("_SpotAngle", spotLight.spotAngle);
+        }
     }
 }
