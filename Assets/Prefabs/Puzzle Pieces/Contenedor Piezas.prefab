@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 588061560186898674}
   - component: {fileID: 4608375398415184021}
   - component: {fileID: 8642943430053574229}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pieza1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 404930637677808632}
   - component: {fileID: 2665102433699849860}
   - component: {fileID: 8901533051180889895}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pieza1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3492456139259894974}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PIEZAS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,9 +226,9 @@ GameObject:
   - component: {fileID: 8018753711089095447}
   - component: {fileID: 7052940167383032303}
   - component: {fileID: 9162166606910451236}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: CollectiblesRecipient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 3279502615238003042}
   - component: {fileID: 1430978558930886909}
   - component: {fileID: 6513065254293515936}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pieza1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 6293955023495009141}
   - component: {fileID: 2396202595651162103}
   - component: {fileID: 3214841334308612490}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Contenedor Piezas
   m_TagString: CollectiblesRecipient
   m_Icon: {fileID: 0}

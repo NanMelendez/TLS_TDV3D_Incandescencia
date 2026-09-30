@@ -19,9 +19,9 @@ TagManager:
   - UI
   - LightInteractable
   - Player
-  - 
-  - 
-  - 
+  - Walls
+  - Interactables
+  - Goal
   - 
   - 
   - 

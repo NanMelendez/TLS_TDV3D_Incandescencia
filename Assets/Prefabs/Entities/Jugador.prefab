@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 65012713745861337}
   - component: {fileID: 5171309178347658646}
   - component: {fileID: 3473804209031059544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Modelo
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 7023906156934919823}
   - component: {fileID: 195210035943549697}
   - component: {fileID: 8056442747721013404}
+  - component: {fileID: 328870194376090587}
   - component: {fileID: 1455059393603199105}
   - component: {fileID: 4348415415776808130}
   - component: {fileID: 5339250393738544201}
@@ -354,10 +355,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   cmCamera: {fileID: 0}
+  cmiac: {fileID: 0}
   healthManager: {fileID: 1455059393603199105}
   movementManager: {fileID: 4348415415776808130}
   aimManager: {fileID: 5339250393738544201}
   lightToggleManager: {fileID: 3534269328759385228}
+--- !u!114 &328870194376090587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107552606044743638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff9a281f080f1f468ab728bbbc63d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPiecesCollect
 --- !u!114 &1455059393603199105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4bf83b3db3b7849bc19b8a295b43b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
-  rayLength: 15
+  rayLength: 2
   origin: {fileID: 0}
   interactAction: {fileID: 1508359596793712226, guid: 873810ac73209ae468ed2348f0f29e38, type: 3}
   cmiac: {fileID: 0}

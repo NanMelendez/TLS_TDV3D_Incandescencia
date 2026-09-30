@@ -11,10 +11,14 @@ public class PuzzleComponentRecipient : BasePuzzleComponent
     {
         foreach (GameObject piece in expectedObjects)
             piece.SetActive(false);
+
+        ColRecipientManager.Instance.SpawnPieces(expectedObjects.Count);
     }
 
     public void ReceivePiece()
     {
+        Debug.Log("Received piece!");
+
         if (currentCollectedCount < expectedObjects.Count)
         {
             expectedObjects[currentCollectedCount].SetActive(true);

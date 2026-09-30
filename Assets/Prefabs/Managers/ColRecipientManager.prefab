@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2154624956201444338
+--- !u!1 &7216355560786181759
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 423663170722325696}
-  - component: {fileID: 1189813737487022875}
+  - component: {fileID: 6688099740818182825}
+  - component: {fileID: 3502679152726156427}
   m_Layer: 0
-  m_Name: MonsterSummonManager
+  m_Name: ColRecipientManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &423663170722325696
+--- !u!4 &6688099740818182825
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154624956201444338}
+  m_GameObject: {fileID: 7216355560786181759}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.93788, z: 4.40645}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1189813737487022875
+--- !u!114 &3502679152726156427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154624956201444338}
+  m_GameObject: {fileID: 7216355560786181759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4042b5759a0253e4caf7d5db376511cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 09d9b5ac856229e4fa171c6d33bb570e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterSummonManager
-  countdown: 75
-  spawner: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ColRecipientManager
+  pieceInstance: {fileID: 2320526081357638451, guid: 6d799db704a7d5b46918742403554dc0, type: 3}
+  spawnRadius: 50

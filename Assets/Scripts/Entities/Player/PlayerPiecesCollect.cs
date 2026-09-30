@@ -10,12 +10,16 @@ public class PlayerPiecesCollect : MonoBehaviour
 			collectedPiecesCount++;
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("CollectiblesRecipient") && collectedPiecesCount > 0)
 		{
-			collision.gameObject.GetComponent<PuzzleComponentRecipient>().ReceivePiece();
-			collectedPiecesCount--;
+			PuzzleComponentRecipient pcr = collision.gameObject.GetComponent<PuzzleComponentRecipient>();
+			while (collectedPiecesCount > 0)
+			{
+				pcr.ReceivePiece();
+				collectedPiecesCount--;
+			}
 		}
 	}
 }

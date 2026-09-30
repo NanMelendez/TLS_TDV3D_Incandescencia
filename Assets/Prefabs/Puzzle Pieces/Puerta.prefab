@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5236545066130627757}
   - component: {fileID: 5830212306449258248}
   - component: {fileID: 7221500664886537096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Modelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 60446792024488014}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2183, y: 3.3891, z: 0}
-  m_LocalScale: {x: 22.204576, y: 6.858156, z: 1}
+  m_LocalPosition: {x: 6.5328, y: 3.3891, z: 0}
+  m_LocalScale: {x: 11.57534, y: 6.858156, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 246118034963375877}
@@ -171,7 +171,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1537151967869400370
 MonoBehaviour:
