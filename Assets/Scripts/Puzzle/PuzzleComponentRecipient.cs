@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PuzzleCountAwaiter : BasePuzzleComponent
+public class PuzzleComponentRecipient : BasePuzzleComponent
 {
     [SerializeField] private List<GameObject> expectedObjects;
 

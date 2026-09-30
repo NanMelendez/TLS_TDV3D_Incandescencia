@@ -8,6 +8,8 @@ TagManager:
   - LightInteractable
   - GiantMoth
   - PuzzleButtonInteractable
+  - CollectiblesRecipient
+  - CollectibleComponent
   layers:
   - Default
   - TransparentFX
