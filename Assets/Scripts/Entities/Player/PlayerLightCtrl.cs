@@ -6,6 +6,11 @@ public class PlayerLightCtrl : MonoBehaviour
     [SerializeField] private LightSrcComp lsc;
     [SerializeField] private InputActionReference lightToggleAction;
 
+    public bool IsOn
+    {
+        get => lsc.IsOn;
+    }
+
     private void OnEnable()
     {
         lightToggleAction.action.Enable();
