@@ -36,6 +36,11 @@ public class ColRecipientManager : MonoBehaviour
 
 	public void SpawnPieces(int n)
 	{
+		NavMeshTriangulation triangulation = NavMesh.CalculateTriangulation();
+
+		if (triangulation.vertices == null || triangulation.vertices.Length == 0)
+			return;
+
 		int spawnedCount = 0;
 
 		while (spawnedCount < n)
