@@ -640,6 +640,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6758307259823471472, guid: 96449f58da9c97545af1bcf0cb91e8a3, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 863754594}
     - target: {fileID: 7333822516401474787, guid: 96449f58da9c97545af1bcf0cb91e8a3, type: 3}
       propertyPath: m_Name
       value: "Bot\xF3n Puzzle (1)"
@@ -665,6 +669,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4242182867131410118, guid: 96449f58da9c97545af1bcf0cb91e8a3, type: 3}
   m_PrefabInstance: {fileID: 380172007}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &522781125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4945412210404116979, guid: 8517b098a7d393a428d9b68c16014ac3, type: 3}
+  m_PrefabInstance: {fileID: 6978824845137646498}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &572759082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,7 +1737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051727214213280684, guid: 1934279302d77e7458b50bbbe22834e8, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1741,6 +1756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjetoLuz
       objectReference: {fileID: 0}
+    - target: {fileID: 4696277041817233989, guid: 4f0de4b562717194eac6b39496cdd9cf, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 863754594}
     - target: {fileID: 8062708157968371990, guid: 4f0de4b562717194eac6b39496cdd9cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2177,6 +2196,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 60702637}
     m_Modifications:
+    - target: {fileID: 1948711576454652097, guid: 8517b098a7d393a428d9b68c16014ac3, type: 3}
+      propertyPath: stateText
+      value: 
+      objectReference: {fileID: 522781125}
     - target: {fileID: 6293955023495009141, guid: 8517b098a7d393a428d9b68c16014ac3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.49998
@@ -2217,6 +2240,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7013216629362760729, guid: 8517b098a7d393a428d9b68c16014ac3, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 863754594}
     - target: {fileID: 8934212476632722866, guid: 8517b098a7d393a428d9b68c16014ac3, type: 3}
       propertyPath: m_Name
       value: Contenedor Piezas

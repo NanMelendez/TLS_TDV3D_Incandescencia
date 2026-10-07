@@ -7,6 +7,16 @@ public class PuzzleComponentRecipient : BasePuzzleComponent
 
     private int currentCollectedCount = 0;
 
+    public int CurrentlyCollectedCount
+    {
+        get => currentCollectedCount;
+    }
+
+    public int ExpectedCount
+    {
+        get => expectedObjects.Count;
+    }
+
     private void Awake()
     {
         foreach (GameObject piece in expectedObjects)

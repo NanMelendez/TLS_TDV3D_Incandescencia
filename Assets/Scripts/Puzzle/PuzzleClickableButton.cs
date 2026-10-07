@@ -8,6 +8,11 @@ public class PuzzleClickableButton : BasePuzzleComponent
 
     private float timer = 0.0f;
 
+    public float CountdownTimer
+    {
+        get => timer;
+    }
+
     public override void Activate()
     {
         base.Activate();
