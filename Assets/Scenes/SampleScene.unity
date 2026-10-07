@@ -1109,6 +1109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   monsterSummonManager: {fileID: 1997033515}
   gameplayUIManager: {fileID: 968469817}
+  pauseAction: {fileID: -5341755125284915772, guid: 873810ac73209ae468ed2348f0f29e38, type: 3}
+  gameState: 0
 --- !u!1 &1305158034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1585,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 60702637}
     m_Modifications:
+    - target: {fileID: 3803077792490342653, guid: bed8c60b676a10444b35b85294f9d4e4, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803077792490342653, guid: bed8c60b676a10444b35b85294f9d4e4, type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5339250393738544201, guid: bed8c60b676a10444b35b85294f9d4e4, type: 3}
       propertyPath: cmiac
       value: 
@@ -1709,6 +1719,10 @@ PrefabInstance:
     - target: {fileID: 8787197504346351231, guid: 1934279302d77e7458b50bbbe22834e8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051727214213280684, guid: 1934279302d77e7458b50bbbe22834e8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
