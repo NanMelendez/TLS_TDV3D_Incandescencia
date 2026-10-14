@@ -20,13 +20,13 @@ public class GameManager : MonoBehaviour
 			switch (value)
 			{
 				case GameState.Playing:
-					Cursor.lockState = CursorLockMode.Locked;
-					Cursor.visible = true;
-					Time.timeScale = 1.0f;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    Time.timeScale = 1.0f;
 					break;
 				case GameState.Paused:
 					Cursor.lockState = CursorLockMode.Confined;
-					Cursor.visible = false;
+					Cursor.visible = true;
 					Time.timeScale = 0.0f;
 					break;
 				case GameState.GameOver:
@@ -52,8 +52,9 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		Cursor.lockState = CursorLockMode.Locked;
-	}
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
 	private void Update()
     {
@@ -62,7 +63,8 @@ public class GameManager : MonoBehaviour
 
 	private void OnPauseButtonPressed(InputAction.CallbackContext context)
 	{
-		if (!isGameOver)
+        if (CodePanel.IsOpen) return;
+        if (!isGameOver)
 			isPaused = !isPaused;
 		
 		GameStatus = isPaused ? GameState.Paused : GameState.Playing;
