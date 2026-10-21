@@ -17,6 +17,15 @@ public class PlayerController : MonoBehaviour
         get => healthManager.IsAlive;
     }
 
+    public bool MovementActive
+    {
+        get => movementManager.ControllerEnabled;
+        set
+        {
+            movementManager.ControllerEnabled = value;
+        }
+    }
+
     private void Awake()
     {
         healthStatus = healthManager.IsAlive;

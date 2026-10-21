@@ -28,7 +28,7 @@ public class MonsterSummonManager : MonoBehaviour
         if (countdown > 0.0f && activeLightsCount > 0)
         {
             countdown = Mathf.Max(countdown - Time.deltaTime, 0);
-            Debug.Log($"Restante: {countdown}");
+            // Debug.Log($"Restante: {countdown}");
         }
 
         if (!monsterHasBeenSummoned && countdown == 0.0f)

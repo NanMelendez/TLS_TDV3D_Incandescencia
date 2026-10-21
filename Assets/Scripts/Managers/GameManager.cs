@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
 
 	private bool isPaused = false;
 	private bool isGameOver = false;
+	private PlayerController player;
 
 	public GameState GameStatus
 	{
@@ -52,11 +54,15 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
+		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	private void Update()
     {
+		if (!gameplayUIManager)
+			return;
+
         gameplayUIManager.CountdownText = TimeSpan.FromSeconds(monsterSummonManager.CountdownTimer).ToString(@"mm\:ss");
     }
 
@@ -66,5 +72,17 @@ public class GameManager : MonoBehaviour
 			isPaused = !isPaused;
 		
 		GameStatus = isPaused ? GameState.Paused : GameState.Playing;
+	}
+
+	public void ChangeLevel(string levelName)
+	{
+		SceneManager.LoadScene(levelName);
+	}
+
+	public void TeleportPlayerTo(Transform location)
+	{
+		player.MovementActive = false;
+		player.transform.position = location.position;
+		player.MovementActive = true;
 	}
 }

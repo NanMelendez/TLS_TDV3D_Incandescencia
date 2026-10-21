@@ -58,7 +58,7 @@ public class PlayerAim : MonoBehaviour
 
 	private void OnInteraction(InputAction.CallbackContext context)
 	{
-		Debug.Log("Iniciando interacción...");
+		// Debug.Log("Iniciando interacción...");
 
 		if (hasHitSomething && currentInteractable != null)
             currentInteractable.Interact();

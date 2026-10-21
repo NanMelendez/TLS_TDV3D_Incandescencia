@@ -272,7 +272,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1506
+  m_VersionIndex: 1526
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Shape:
     rid: 579485844190527679
   m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_UnmodifiedMeshVersion: 1497
+  m_UnmodifiedMeshVersion: 1520
   m_Size: {x: 6, y: 4.494421, z: 1}
   m_LocalCenter: {x: 0, y: 1.7472105, z: 0}
   references:
@@ -426,7 +426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8936f084b07c3140bb5e205376accbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleSignalReceiver
-  puzzleActivators: []
+  puzzleActivators:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   OnActivated:
     m_PersistentCalls:
       m_Calls:

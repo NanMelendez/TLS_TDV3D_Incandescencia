@@ -1,13 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GoalDetector : MonoBehaviour
 {
-    [SerializeField] private string nextLevelName;
+    public UnityEvent actionOnCollide;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-            SceneManager.LoadScene(nextLevelName);
-    }
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+			actionOnCollide?.Invoke();
+	}
 }

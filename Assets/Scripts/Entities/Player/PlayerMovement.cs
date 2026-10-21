@@ -30,4 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
 		charController.Move(moveSpeed * Time.deltaTime * finalDir);
 	}
+
+	public bool ControllerEnabled
+	{
+		get => charController.enabled;
+		set
+		{
+			charController.enabled = value;
+		}
+	}
 }
