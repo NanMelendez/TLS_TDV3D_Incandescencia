@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5876641998366675108}
   - component: {fileID: 6759356978966714893}
   - component: {fileID: 4091520241950459127}
+  - component: {fileID: 7351196730375562621}
   m_Layer: 0
   m_Name: Modelo
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ae1ee69a1557bf4c92bfa8e25bf8574, type: 2}
+  - {fileID: 2100000, guid: fcf2e85438d300440b9980f475bb28c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,6 +115,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7351196730375562621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529474291344632540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9415f20ab408d4dabefed4e6643c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterSpawner
+  entity: {fileID: 3820441527866926520, guid: 77900ae71e0104345bc0ed6c95a23ea6, type: 3}
+  col: {fileID: 4091520241950459127}
 --- !u!1 &6292948409770460222
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +139,6 @@ GameObject:
   m_Component:
   - component: {fileID: 699911435482934744}
   - component: {fileID: 8737628454489549419}
-  - component: {fileID: 3177173635937051041}
   m_Layer: 0
   m_Name: Spawner Polilla
   m_TagString: Untagged
@@ -175,17 +189,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3177173635937051041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6292948409770460222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20bba1a1046264a44abf8489887b2d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MothSpawner
-  mothEntity: {fileID: 3820441527866926520, guid: ded1133e69aeb6545a8a221656ce2788, type: 3}
-  col: {fileID: 4091520241950459127}

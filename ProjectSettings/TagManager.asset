@@ -4,12 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Ground
-  - LightInteractable
-  - GiantMoth
-  - PuzzleButtonInteractable
-  - CollectiblesRecipient
-  - CollectibleComponent
+  - Collectible
+  - PuzzleComponent
   layers:
   - Default
   - TransparentFX
@@ -17,11 +13,11 @@ TagManager:
   - Ground
   - Water
   - UI
-  - LightInteractable
+  - Wall
   - Player
-  - Walls
-  - Interactables
-  - Goal
+  - Mirror
+  - 
+  - 
   - 
   - 
   - 

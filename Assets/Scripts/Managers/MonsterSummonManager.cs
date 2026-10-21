@@ -4,54 +4,51 @@ using UnityEngine;
 
 public class MonsterSummonManager : MonoBehaviour
 {
-	[SerializeField] [Min(0.0f)] private float countdown;
-    [SerializeField] private MothSpawner spawner;
+    [SerializeField][Min(0.0f)] private float countdown;
+    [SerializeField] private MonsterSpawner spawner;
 
-    private List<LightSrcComp> lights = new();
+    private List<LightSrcComponent> lights = new();
     private bool monsterHasBeenSummoned = false;
+    private int activeLightsCount = 0;
 
-	public float CountdownTimer
-	{
-		get => countdown;
-	}
+    public float CountdownTimer => countdown;
 
-	private void Awake()
-	{
-		lights = FindObjectsByType<LightSrcComp>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
-	}
+    private void Awake()
+    {
+        lights = FindObjectsByType<LightSrcComponent>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
 
-	private void Update()
-	{
-		if (countdown > 0.0f && IsAnyLightOn())
-			countdown = Mathf.Max(countdown - Time.deltaTime, 0.0f);
+        foreach (LightSrcComponent light in lights)
+        {
+            light.OnStateChanged += HandleLightsStateChanged;
+        }
+    }
 
-		if (!monsterHasBeenSummoned && countdown == 0.0f)
-		{
-			SummonMonster();
-			monsterHasBeenSummoned = true;
-		}
-	}
+    private void Update()
+    {
+        if (countdown > 0.0f && activeLightsCount > 0)
+        {
+            countdown = Mathf.Max(countdown - Time.deltaTime, 0);
+            Debug.Log($"Restante: {countdown}");
+        }
 
-	private bool IsAnyLightOn()
-	{
-		bool var = false;
+        if (!monsterHasBeenSummoned && countdown == 0.0f)
+        {
+            Summon();
+            monsterHasBeenSummoned = true;
+        }
+    }
 
-		if (lights.Count > 0)
-            foreach (LightSrcComp light in lights)
-            {
-                if (light.IsOn)
-                {
-                    var = true;
-                    break;
-                }
-            }
+    private void HandleLightsStateChanged(bool isOn)
+    {
+        if (isOn)
+            activeLightsCount++;
+        else
+            activeLightsCount = Mathf.Max(0, activeLightsCount - 1);
+    }
 
-        return var;
-	}
-
-	private void SummonMonster()
-	{
-		Debug.Log("RUN BRO, RUUUUUUUUUUUUUUN!");
+    private void Summon()
+    {
+        Debug.Log("¡CORRE HVÓN!");
         spawner.Spawn();
-	}
+    }
 }

@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 517ae38595f16d646b8833466a1e7344, type: 2}
+  - {fileID: 2100000, guid: e7d804eca08b6914c80aacecea13d2ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5968355687383923412}
   - component: {fileID: 4845812196087653829}
-  - component: {fileID: 986648630510182100}
+  - component: {fileID: 43511179848354784}
   m_Layer: 0
   m_Name: Polilla
   m_TagString: GiantMoth
@@ -173,7 +173,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &986648630510182100
+--- !u!114 &43511179848354784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,8 +182,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3820441527866926520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b1709feeae74649bc352f6e69fe369, type: 3}
+  m_Script: {fileID: 11500000, guid: e66bf7473e2b7264e93bcc1a8e3a08b0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MothMovement
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterMovement
   speed: 7
   rb: {fileID: 4845812196087653829}

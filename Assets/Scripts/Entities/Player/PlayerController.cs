@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerHealth healthManager;
     [SerializeField] private PlayerMovement movementManager;
     [SerializeField] private PlayerAim aimManager;
-    [SerializeField] private PlayerLightCtrl lightToggleManager;
+    [SerializeField] private PlayerSelfLight selfLight;
 
     private bool healthStatus;
 

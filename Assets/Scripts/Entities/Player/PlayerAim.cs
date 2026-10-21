@@ -1,12 +1,11 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering.UI;
 
 public class PlayerAim : MonoBehaviour
 {
-	[SerializeField] [Min(0.01f)] private float rayLength = 1.0f;
-	[SerializeField] private Transform origin;
+	[SerializeField][Min(0.01f)] private float rayLength = 1.0f;
+	[SerializeField] private Transform camTransform;
 	[SerializeField] private InputActionReference interactAction;
 	[SerializeField] private CinemachineInputAxisController cmiac;
 	[SerializeField] private Transform lookAtTransform;
@@ -14,36 +13,63 @@ public class PlayerAim : MonoBehaviour
 
 	private RaycastHit lastHit;
 	private bool hasHitSomething;
+	private IInteractable currentInteractable;
 
 	private void OnEnable()
 	{
 		interactAction.action.Enable();
-		interactAction.action.performed += OnInteractionClick;
+		interactAction.action.performed += OnInteraction;
 	}
 
 	private void OnDisable()
 	{
 		interactAction.action.Disable();
-		interactAction.action.performed -= OnInteractionClick;
+		interactAction.action.performed -= OnInteraction;
 	}
 
 	private void Update()
 	{
-		Vector3 rayDirection = origin.forward;
+		DoRaycast();
+		UpdateCameraSensitivity();
+		MatchCameraDirection();
+	}
 
-		if (Physics.Raycast(origin.position, rayDirection, out lastHit, rayLength))
+	private void DoRaycast()
+	{
+		Vector3 rayDirection = camTransform.forward;
+
+		if (Physics.Raycast(camTransform.position, rayDirection, out lastHit, rayLength))
 		{
-			Debug.DrawLine(origin.position, lastHit.point, Color.green);
+			Debug.DrawLine(camTransform.position, lastHit.point, Color.green);
 			hasHitSomething = true;
+
+			if (lastHit.collider.TryGetComponent(out IInteractable interactable))
+				currentInteractable = interactable;
+			else
+				currentInteractable = null;
 		}
 		else
 		{
-			Debug.DrawRay(origin.position, rayDirection * rayLength, Color.red);
+			Debug.DrawRay(camTransform.position, rayDirection * rayLength, Color.red);
 			hasHitSomething = false;
+			currentInteractable = null;
 		}
+	}
+
+	private void OnInteraction(InputAction.CallbackContext context)
+	{
+		Debug.Log("Iniciando interacción...");
+
+		if (hasHitSomething && currentInteractable != null)
+            currentInteractable.Interact();
+    }
+
+	private void UpdateCameraSensitivity()
+	{
+		if (cmiac == null || cmiac.Controllers == null)
+			return;
 
 		foreach (var c in cmiac.Controllers)
-		{
 			switch (c.Name)
 			{
 				case "Look X (Pan)":
@@ -53,32 +79,18 @@ public class PlayerAim : MonoBehaviour
 					c.Input.Gain = -mouseSensitivity;
 					break;
 			}
-		}
-
-		MatchCameraDirection();
-	}
-
-	private void OnInteractionClick(InputAction.CallbackContext context)
-	{
-		if (hasHitSomething)
-		{
-			if (lastHit.collider.CompareTag("LightInteractable"))
-                lastHit.collider.GetComponent<LightSrcComp>().Toggle();
-
-			if (lastHit.collider.CompareTag("PuzzleButtonInteractable"))
-				lastHit.collider.GetComponent<PuzzleClickableButton>().Activate();
-        }
 	}
 
 	private void MatchCameraDirection()
 	{
+		if (cmiac == null || lookAtTransform == null)
+			return;
+
 		Vector3 camForward = cmiac.transform.forward;
-
 		lookAtTransform.rotation = Quaternion.LookRotation(camForward);
-
 		camForward.y = 0.0f;
-		
+
 		if (camForward.sqrMagnitude > 0.001f)
-            transform.rotation = Quaternion.LookRotation(camForward);
-    }
+			transform.rotation = Quaternion.LookRotation(camForward);
+	}
 }

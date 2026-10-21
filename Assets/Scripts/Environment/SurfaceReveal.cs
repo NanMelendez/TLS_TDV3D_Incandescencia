@@ -6,11 +6,11 @@ public class SurfaceReveal : MonoBehaviour
     [SerializeField] private Material mat;
     [SerializeField] private Light spotLight;
 
-    private PlayerLightCtrl plc;
+    private PlayerSelfLight playerLight;
 
     private void Awake()
     {
-        plc = GameObject.FindWithTag("Player").GetComponent<PlayerLightCtrl>();
+        playerLight = GameObject.FindWithTag("Player").GetComponent<PlayerSelfLight>();
     }
 
     private void Update()
@@ -20,8 +20,8 @@ public class SurfaceReveal : MonoBehaviour
             mat.SetVector("_SpotPos", spotLight.transform.position);
             mat.SetVector("_SpotDir", -spotLight.transform.forward);
             mat.SetFloat("_SpotAngle", spotLight.spotAngle);
-            if (plc)
-                mat.SetInteger("_IsHeadLightOn", plc.IsOn ? 1 : 0);
+            if (playerLight)
+                mat.SetInteger("_IsHeadLightOn", playerLight.IsOn ? 1 : 0);
         }
     }
 }
