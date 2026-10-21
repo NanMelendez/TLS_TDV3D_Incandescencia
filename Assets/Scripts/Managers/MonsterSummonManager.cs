@@ -25,6 +25,9 @@ public class MonsterSummonManager : MonoBehaviour
 
     private void Update()
     {
+        if (!spawner)
+            return;
+
         if (countdown > 0.0f && activeLightsCount > 0)
         {
             countdown = Mathf.Max(countdown - Time.deltaTime, 0);

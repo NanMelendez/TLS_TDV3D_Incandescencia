@@ -9,6 +9,7 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 	[SerializeField] private GameObject fakePieceInstance = null;
 	[SerializeField][Range(0, 100)] private int fakePieceSpawnChance = 40;
 	[SerializeField] private CollectibleType expectedType;
+	[SerializeField] private string navmeshAreaName;
 
 	readonly private List<GameObject> piecesGOs = new();
 	private int collectedCount = 0;
@@ -28,7 +29,7 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 
     private void Start()
     {
-        PieceSpreadManager.Instance.SpawnPieces(piecesGOs.Count, expectedType, pieceInstance, fakePieceInstance, fakePieceSpawnChance);
+        PieceSpreadManager.Instance.SpawnPieces(navmeshAreaName, piecesGOs.Count, expectedType, pieceInstance, fakePieceInstance, fakePieceSpawnChance);
     }
 
     public void Interact()

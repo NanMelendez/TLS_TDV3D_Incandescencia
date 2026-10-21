@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class PieceSpreadManager : MonoBehaviour
 {
 	[SerializeField] private Transform whereToAnchor;
+	[SerializeField] private int maxFakes = 10;
 
 	private Vector3 navMeshMinBounds;
 	private Vector3 navMeshMaxBounds;
@@ -32,9 +33,12 @@ public class PieceSpreadManager : MonoBehaviour
 		}
 	}
 
-	public void SpawnPieces(int n, CollectibleType collectibleType, GameObject instance, GameObject fakeInstance = null, int fakeSpawnChance = 10)
+	public void SpawnPieces(string navmeshAreaName, int n, CollectibleType collectibleType, GameObject instance, GameObject fakeInstance = null, int fakeSpawnChance = 10)
 	{
+		int fakeCount = 0;
+
 		NavMeshTriangulation triangulation = NavMesh.CalculateTriangulation();
+		int roomMask = 1 << NavMesh.GetAreaFromName(navmeshAreaName);
 
 		if (triangulation.vertices == null || triangulation.vertices.Length == 0)
 			return;
@@ -51,7 +55,7 @@ public class PieceSpreadManager : MonoBehaviour
 
 			float searchRadius = (navMeshMaxBounds.y - navMeshMinBounds.y) + 5.0f;
 
-			if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, searchRadius, NavMesh.AllAreas))
+			if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, searchRadius, roomMask))
 			{
 				Vector3 final = hit.position + Vector3.up * 0.5f;
 				if (collectibleType != CollectibleType.Key)
@@ -63,8 +67,11 @@ public class PieceSpreadManager : MonoBehaviour
 				{
 					int rng = Random.Range(0, 100);
 					GameObject toSpawnInstance;
-                    if (rng < fakeSpawnChance)
-                        toSpawnInstance = fakeInstance;
+                    if (rng < fakeSpawnChance && fakeCount < maxFakes)
+					{
+						toSpawnInstance = fakeInstance;
+						fakeCount++;
+					}
                     else
 					{
 						toSpawnInstance = instance;
