@@ -34,13 +34,17 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 
     public void Interact()
 	{
+		PlayerPickupCollector playerCollector = FindFirstObjectByType<PlayerPickupCollector>();
+		CollectibleData heldPiece = playerCollector.HeldPiece;
+
 		if (collectedCount >= MaxProgress)
 		{
 			Debug.Log("Se entregaron todas las piezas");
+			if (heldPiece.isFake)
+				playerCollector.Consume();
             return;
         }
 
-		PlayerPickupCollector playerCollector = FindFirstObjectByType<PlayerPickupCollector>();
 		if (!playerCollector)
 		{
 			Debug.Log("No existe componente recolector en el jugador");
@@ -52,8 +56,6 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 			Debug.Log("No tienes ninguna pieza para entregar aquí");
             return;
         }
-
-		CollectibleData heldPiece = playerCollector.HeldPiece;
 		if (heldPiece.type != expectedType)
 		{
 			Debug.Log("La pieza no encaja aquí");
