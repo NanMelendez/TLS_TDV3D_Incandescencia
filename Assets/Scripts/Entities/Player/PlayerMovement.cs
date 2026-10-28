@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		Vector3 finalDir = (transform.forward * moveDir.y) + (transform.right * moveDir.x);
 
-		charController.Move(moveSpeed * Time.deltaTime * finalDir);
+		charController.SimpleMove(moveSpeed * finalDir);
+		// charController.Move(moveSpeed * Time.deltaTime * finalDir);
 	}
 
 	public bool ControllerEnabled

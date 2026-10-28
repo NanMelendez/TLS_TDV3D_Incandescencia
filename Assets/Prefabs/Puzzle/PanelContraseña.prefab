@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 2680629674355395670}
   - component: {fileID: 4394158611478378114}
   m_Layer: 0
-  m_Name: BtnSub
+  m_Name: BtnDel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,8 +141,8 @@ Transform:
   m_GameObject: {fileID: 352280714061495414}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.276, y: -0.5369999, z: 0.112}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.05}
+  m_LocalPosition: {x: 0.276, y: -0.5369999, z: 0.112}
+  m_LocalScale: {x: 0.3, y: 0.2, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 373939870495741108}
@@ -180,7 +180,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffd0e2c90e7c13e458e733e8f297f9a7, type: 2}
+  - {fileID: 2100000, guid: e7d804eca08b6914c80aacecea13d2ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzlePasswordControl
   receiver: {fileID: 735342248357039130}
-  actionType: 1
+  actionType: 0
 --- !u!1 &819176092953658334
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 6215082254964980704}
   - component: {fileID: 8201136960974480470}
   m_Layer: 0
-  m_Name: BtnDel
+  m_Name: BtnSub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,8 +405,8 @@ Transform:
   m_GameObject: {fileID: 847325517282103247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.292, y: -0.537, z: 0.112}
-  m_LocalScale: {x: 0.35, y: 0.2, z: 0.05}
+  m_LocalPosition: {x: -0.292, y: -0.537, z: 0.112}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 373939870495741108}
@@ -444,7 +444,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7d804eca08b6914c80aacecea13d2ab, type: 2}
+  - {fileID: 2100000, guid: ffd0e2c90e7c13e458e733e8f297f9a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzlePasswordControl
   receiver: {fileID: 735342248357039130}
-  actionType: 0
+  actionType: 1
 --- !u!1 &1151191248049934628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: <-
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2900,7 +2900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <-
+  m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

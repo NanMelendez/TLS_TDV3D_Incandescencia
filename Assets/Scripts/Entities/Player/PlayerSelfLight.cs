@@ -6,10 +6,16 @@ public class PlayerSelfLight : MonoBehaviour
     [SerializeField] private LightSrcComponent lightSrc;
     [SerializeField] private InputActionReference toggleAction;
 
+    private GameManager gm;
+
     public bool IsOn => lightSrc.IsOn;
 
     public Light LightSrc => lightSrc.LightSrc;
 
+	private void Awake()
+	{
+        gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+	}
 
 	private void OnEnable()
     {
@@ -25,6 +31,7 @@ public class PlayerSelfLight : MonoBehaviour
 
     private void OnTogglePress(InputAction.CallbackContext context)
     {
-        lightSrc.IsOn = !lightSrc.IsOn;
+        if (gm.GameStatus == GameState.Playing)
+            lightSrc.IsOn = !lightSrc.IsOn;
     }
 }

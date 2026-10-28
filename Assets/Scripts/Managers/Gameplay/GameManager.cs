@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
 			switch (value)
 			{
 				case GameState.Playing:
-					Cursor.lockState = CursorLockMode.Locked;
-					Cursor.visible = true;
+					gameplayUIManager.PausePanelState = false;
+					HideCursor();
 					Time.timeScale = 1.0f;
 					break;
 				case GameState.Paused:
-					Cursor.lockState = CursorLockMode.Confined;
-					Cursor.visible = false;
+					gameplayUIManager.PausePanelState = true;
+					ReleaseCursor();
 					Time.timeScale = 0.0f;
 					break;
 				case GameState.GameOver:
@@ -52,10 +52,15 @@ public class GameManager : MonoBehaviour
 		pauseAction.action.performed -= OnPauseButtonPressed;
 	}
 
+	private void OnDestroy()
+	{
+		ReleaseCursor();
+	}
+
 	private void Awake()
 	{
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-		Cursor.lockState = CursorLockMode.Locked;
+		HideCursor();
 	}
 
 	private void Update()
@@ -66,11 +71,27 @@ public class GameManager : MonoBehaviour
         gameplayUIManager.CountdownText = TimeSpan.FromSeconds(monsterSummonManager.CountdownTimer).ToString(@"mm\:ss");
     }
 
+	private void OnApplicationFocus(bool focus)
+	{
+		if (focus)
+		{
+			if (gameState == GameState.Playing)
+				HideCursor();
+			else
+				ReleaseCursor();
+		}
+	}
+
 	private void OnPauseButtonPressed(InputAction.CallbackContext context)
+	{
+		PauseToggle();
+	}
+
+	public void PauseToggle()
 	{
 		if (!isGameOver)
 			isPaused = !isPaused;
-		
+
 		GameStatus = isPaused ? GameState.Paused : GameState.Playing;
 	}
 
@@ -84,5 +105,17 @@ public class GameManager : MonoBehaviour
 		player.MovementActive = false;
 		player.transform.position = location.position;
 		player.MovementActive = true;
+	}
+
+	private void HideCursor()
+	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+	}
+
+	private void ReleaseCursor()
+	{
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 }
