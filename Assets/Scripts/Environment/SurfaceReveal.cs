@@ -4,24 +4,25 @@ using UnityEngine;
 public class SurfaceReveal : MonoBehaviour
 {
     [SerializeField] private Material mat;
-    [SerializeField] private Light spotLight;
-
+    
+    private Light src;
     private PlayerSelfLight playerLight;
 
     private void Awake()
     {
         playerLight = GameObject.FindWithTag("Player").GetComponent<PlayerSelfLight>();
-    }
+        src = playerLight ? playerLight.LightSrc : null;
+	}
 
     private void Update()
     {
-        if (spotLight)
+        if (src)
         {
-            mat.SetVector("_SpotPos", spotLight.transform.position);
-            mat.SetVector("_SpotDir", -spotLight.transform.forward);
-            mat.SetFloat("_SpotAngle", spotLight.spotAngle);
-            if (playerLight)
-                mat.SetInteger("_IsHeadLightOn", playerLight.IsOn ? 1 : 0);
+            mat.SetVector("_SpotPos", src.transform.position);
+            mat.SetVector("_SpotDir", -src.transform.forward);
+            mat.SetFloat("_SpotAngle", src.spotAngle);
+            mat.SetColor("_Color", src.color);
+            mat.SetInteger("_IsHeadLightOn", playerLight.IsOn ? 1 : 0);
         }
     }
 }

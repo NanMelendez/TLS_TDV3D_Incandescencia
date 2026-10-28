@@ -8,7 +8,10 @@ public class PlayerSelfLight : MonoBehaviour
 
     public bool IsOn => lightSrc.IsOn;
 
-    private void OnEnable()
+    public Light LightSrc => lightSrc.LightSrc;
+
+
+	private void OnEnable()
     {
         toggleAction.action.Enable();
         toggleAction.action.performed += OnTogglePress;

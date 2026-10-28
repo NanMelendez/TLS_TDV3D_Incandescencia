@@ -22,6 +22,8 @@ public class LightSrcComponent : MonoBehaviour
 		}
 	}
 
+	public Light LightSrc => lightSrc;
+
 	public void Activate()
 	{
 		IsOn = true;

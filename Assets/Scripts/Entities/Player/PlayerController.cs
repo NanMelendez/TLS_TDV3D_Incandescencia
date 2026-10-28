@@ -12,10 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private bool healthStatus;
 
-    public bool IsAlive
-    {
-        get => healthManager.IsAlive;
-    }
+    public bool IsAlive => healthManager.IsAlive;
 
     public bool MovementActive
     {
@@ -25,6 +22,8 @@ public class PlayerController : MonoBehaviour
             movementManager.ControllerEnabled = value;
         }
     }
+
+    public bool IsHeadLightOn => selfLight.IsOn;
 
     private void Awake()
     {
