@@ -54,11 +54,13 @@ public class GameManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
+		Time.timeScale = 1.0f;
 		ReleaseCursor();
 	}
 
 	private void Awake()
 	{
+		Time.timeScale = 1.0f;
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 		HideCursor();
 	}

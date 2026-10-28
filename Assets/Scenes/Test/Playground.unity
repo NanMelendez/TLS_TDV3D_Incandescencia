@@ -3182,7 +3182,7 @@ GameObject:
   - component: {fileID: 864546854}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6108,6 +6108,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 210327483}
     m_Modifications:
+    - target: {fileID: 203251438097780430, guid: f642a431c367e0c40b05d1cbb6519418, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 1750381473860085575, guid: f642a431c367e0c40b05d1cbb6519418, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6151,6 +6155,10 @@ PrefabInstance:
     - target: {fileID: 2703390069064782393, guid: f642a431c367e0c40b05d1cbb6519418, type: 3}
       propertyPath: m_Name
       value: "C\xE1maraJuego"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5527421966311522032, guid: f642a431c367e0c40b05d1cbb6519418, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8081933150363429127, guid: f642a431c367e0c40b05d1cbb6519418, type: 3}
       propertyPath: Target.TrackingTarget

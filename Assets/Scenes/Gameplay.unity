@@ -2575,7 +2575,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 735342248357039130, guid: 22b86496f8db2da4eab77a9a0cb65a02, type: 3}
       propertyPath: expectedPassword
-      value: 5230
+      value: 1234
       objectReference: {fileID: 0}
     - target: {fileID: 5204224211076609685, guid: 22b86496f8db2da4eab77a9a0cb65a02, type: 3}
       propertyPath: m_LocalPosition.x
