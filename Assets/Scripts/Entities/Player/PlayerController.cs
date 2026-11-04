@@ -8,14 +8,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerHealth healthManager;
     [SerializeField] private PlayerMovement movementManager;
     [SerializeField] private PlayerAim aimManager;
-    [SerializeField] private PlayerLightCtrl lightToggleManager;
+    [SerializeField] private PlayerSelfLight selfLight;
 
     private bool healthStatus;
 
-    public bool IsAlive
+    public bool IsAlive => healthManager.IsAlive;
+
+    public bool MovementActive
     {
-        get => healthManager.IsAlive;
+        get => movementManager.ControllerEnabled;
+        set
+        {
+            movementManager.ControllerEnabled = value;
+        }
     }
+
+    public bool IsHeadLightOn => selfLight.IsOn;
 
     private void Awake()
     {

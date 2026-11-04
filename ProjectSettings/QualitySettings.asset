@@ -118,9 +118,11 @@ QualitySettings:
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 0
+    AndroidXR: 0
     GameCoreScarlett: 1
     GameCoreXboxOne: 1
     Lumin: 0
+    MetaQuest: 0
     Nintendo Switch: 1
     Nintendo Switch 2: 1
     PS4: 1
