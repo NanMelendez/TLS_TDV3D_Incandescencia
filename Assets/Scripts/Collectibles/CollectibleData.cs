@@ -5,4 +5,5 @@ public class CollectibleData : ScriptableObject
 {
     public CollectibleType type;
     public bool isFake;
+    public Sprite sprite;
 }

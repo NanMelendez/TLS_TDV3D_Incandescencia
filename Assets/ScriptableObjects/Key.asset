@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleData
   type: 2
   isFake: 0
+  sprite: {fileID: 21300000, guid: 3c5eee8755215d34c871796d5a18cfcb, type: 3}
