@@ -41,6 +41,7 @@ public class GameplayUIManager : MonoBehaviour
 		if (messageDisplayCoroutine != null)
             StopCoroutine(messageDisplayCoroutine);
 
+		messageTxt.text = text;
 		messageDisplayCoroutine = StartCoroutine(HandleMessageFade());
     }
 
@@ -52,14 +53,14 @@ public class GameplayUIManager : MonoBehaviour
 			currentCollectibleImg.sprite = sprite;
 	}
 
-	IEnumerator HandleMessageFade()
+	private IEnumerator HandleMessageFade()
 	{
 		float timer = messageDisplayTimer;
         messageTxt.alpha = 1.0f;
 
 		while (timer > 0.0f)
 		{
-            messageTxt.alpha = 1.0f - timer / messageDisplayTimer;
+            messageTxt.alpha = timer / messageDisplayTimer;
             timer -= Time.deltaTime;
             yield return null;
         }

@@ -10,6 +10,7 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 	[SerializeField][Range(0, 100)] private int fakePieceSpawnChance = 40;
 	[SerializeField] private CollectibleType expectedType;
 	[SerializeField] private string navmeshAreaName;
+	private GameplayUIManager guim;
 
 	readonly private List<GameObject> piecesGOs = new();
 	private int collectedCount = 0;
@@ -20,6 +21,8 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 
 	private void Awake()
 	{
+		guim = FindFirstObjectByType<GameplayUIManager>();
+
 		foreach (Transform child in piecesBase)
 		{
 			child.gameObject.SetActive(false);
@@ -39,7 +42,9 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 
 		if (collectedCount >= MaxProgress)
 		{
-			Debug.Log("Se entregaron todas las piezas");
+			if (guim)
+				guim.HandleMessageText("Ya coloqué todas las piezas aquí");
+
 			if (heldPiece.isFake)
 				playerCollector.Consume();
             return;
@@ -47,24 +52,28 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 
 		if (!playerCollector)
 		{
-			Debug.Log("No existe componente recolector en el jugador");
+			if (guim)
+				guim.HandleMessageText("A mis creadores les faltó darme un \"PlayerPickupCollector\" >:(");
             return;
         }
 
 		if (!playerCollector.HoldingPiece)
 		{
-			Debug.Log("No tienes ninguna pieza para entregar aquí");
+			if (guim)
+				guim.HandleMessageText("Cierto, tengo que recoger una pieza...");
             return;
         }
 		if (heldPiece.type != expectedType)
 		{
-			Debug.Log("La pieza no encaja aquí");
+			if (guim)
+				guim.HandleMessageText("Ay. Esto no encaja aquí");
 			return;
         }
 
         if (heldPiece.isFake)
 		{
-			Debug.Log("Ups, la pieza es falsa. Descartando...");
+			if (guim)
+				guim.HandleMessageText("Pucha, esta pieza es falsa. Mejor la descarto");
 			playerCollector.Consume();
 			return;
 		}

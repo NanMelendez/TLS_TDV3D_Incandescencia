@@ -7,22 +7,28 @@ public class PlayerPickupCollector : MonoBehaviour, IInteractable
     public CollectibleType Type => piece.type;
     public bool HoldingPiece => piece != null;
     public CollectibleData HeldPiece => piece;
+    [SerializeField] private GameplayUIManager guim;
 
     public bool TryPickUp(CollectibleData data)
     {
         if (HoldingPiece)
         {
-            Debug.Log("Ya se está cargando con una pieza");
+            if (guim)
+                guim.HandleMessageText("Ya tengo una pieza a la mano...");
             return false;
         }
 
         piece = data;
+        if (guim)
+            guim.HandleCollectedImg(true, piece.sprite);
         return true;
     }
 
     public CollectibleData Consume()
     {
         CollectibleData temp = piece;
+        if (guim)
+            guim.HandleCollectedImg(false);
         piece = null;
         return temp;
     }
