@@ -48,6 +48,8 @@ public class PuzzleButton : PuzzleComponent, IInteractable
                 StopCoroutine(toggleCoroutine);
             toggleCoroutine = StartCoroutine(ToggleBackCountdown());
         }
+
+        AudioManager.Instance.SFXActivationDefault();
     }
 
     protected override void Deactivate()
@@ -63,6 +65,8 @@ public class PuzzleButton : PuzzleComponent, IInteractable
 
         remainingTime = 0.0f;
         base.Deactivate();
+
+        AudioManager.Instance.SFXDeactivation();
     }
 
     private IEnumerator ToggleBackCountdown()

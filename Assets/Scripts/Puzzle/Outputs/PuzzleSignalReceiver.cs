@@ -39,9 +39,15 @@ public class PuzzleSignalReceiver : PuzzleComponent, IPuzzleProgressProvider
 		if (allActive != isActive)
 		{
 			if (allActive)
-				Activate();
+			{
+                Activate();
+				AudioManager.Instance.SFXSecret();
+            }
 			else
-				Deactivate();
+			{
+                Deactivate();
+				AudioManager.Instance.SFXDeactivation();
+            }
 
 			if (isActive)
 				OnActivated?.Invoke();

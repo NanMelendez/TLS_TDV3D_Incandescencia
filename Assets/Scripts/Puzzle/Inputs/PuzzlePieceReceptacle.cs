@@ -54,6 +54,7 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 		{
 			if (guim)
 				guim.HandleMessageText("A mis creadores les faltó darme un \"PlayerPickupCollector\" >:(");
+            AudioManager.Instance.SFXError();
             return;
         }
 
@@ -67,6 +68,7 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 		{
 			if (guim)
 				guim.HandleMessageText("Ay. Esto no encaja aquí");
+			AudioManager.Instance.SFXError();
 			return;
         }
 
@@ -74,7 +76,8 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 		{
 			if (guim)
 				guim.HandleMessageText("Pucha, esta pieza es falsa. Mejor la descarto");
-			playerCollector.Consume();
+            AudioManager.Instance.SFXError();
+            playerCollector.Consume();
 			return;
 		}
 
@@ -86,7 +89,10 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 			OnProgressChanged?.Invoke(CurrentProgress, MaxProgress);
 
 			if (collectedCount == MaxProgress)
-				Activate();
+			{
+				AudioManager.Instance.SFXActivationDefault();
+                Activate();
+            }
 		}
 	}
 }

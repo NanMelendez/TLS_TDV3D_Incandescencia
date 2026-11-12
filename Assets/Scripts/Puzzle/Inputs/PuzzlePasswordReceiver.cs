@@ -58,11 +58,13 @@ public class PuzzlePasswordReceiver : PuzzleComponent
             Debug.Log("¡Clave correcta!");
             Activate();
             OnPasswordCorrect?.Invoke();
+            AudioManager.Instance.SFXActivationDefault();
         }
         else
         {
             Debug.Log("Clave incorrecta. Reiniciando...");
             OnPasswordWrong?.Invoke();
+            AudioManager.Instance.SFXError();
             ClearInput();
         }
     }

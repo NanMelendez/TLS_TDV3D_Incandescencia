@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Bits: 256
   collidableLayers:
     serializedVersion: 2
-    m_Bits: 329
+    m_Bits: 328
   line: {fileID: 4010097133210702614}
   maxDistance: 128
   maxBounces: 32
