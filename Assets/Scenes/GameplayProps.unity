@@ -8695,6 +8695,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: "PuzzleC\xF3digo"
       objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 424790491761494181}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 424790491761494181}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleMessageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleMessageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "Ah, me equivoqu\xE9. Probemos de nuevo"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "\xA1Ch\xE9vere, funcion\xF3!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5683185309281634919, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
@@ -8734,6 +8798,42 @@ PrefabInstance:
     - target: {fileID: 5683185309281634919, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.8089316
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.90021074
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.15231
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.49999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11587,10 +11687,12 @@ PrefabInstance:
       value: PuzzleEspejos
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6772229308210418884, guid: 9de2e986ffa54e645b1ed7636fcd550d, type: 3}
+    - {fileID: 3382633100846421363, guid: 9de2e986ffa54e645b1ed7636fcd550d, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8775108731268579279, guid: 9de2e986ffa54e645b1ed7636fcd550d, type: 3}
-      insertIndex: 1
+      insertIndex: -1
       addedObject: {fileID: 1404709998}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9de2e986ffa54e645b1ed7636fcd550d, type: 3}
@@ -13823,7 +13925,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1140175236186743195, guid: 159ddd216e5ff244799f191ca92e6cf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.12
+      value: -8.8
       objectReference: {fileID: 0}
     - target: {fileID: 1140175236186743195, guid: 159ddd216e5ff244799f191ca92e6cf7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15888,6 +15990,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: "PuzzleC\xF3digo"
       objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 424790491761494181}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 424790491761494181}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleMessageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleMessageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "Ah, me equivoqu\xE9. Probemos de nuevo"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "\xA1Ch\xE9vere, funcion\xF3!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordWrong.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393754225796491561, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: OnPasswordCorrect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5683185309281634919, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -15927,6 +16093,42 @@ PrefabInstance:
     - target: {fileID: 5683185309281634919, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.1910706
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1943092
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.9819303
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999934
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166312525916875790, guid: 857282e595fafed44a715c83bdbc1d19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20030,7 +20232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2461416529618219331, guid: 0c7859fbfc27ec24d9542020938be492, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3802467293426537926, guid: 0c7859fbfc27ec24d9542020938be492, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20082,7 +20284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511658999982466805, guid: 0c7859fbfc27ec24d9542020938be492, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9078757782015933830, guid: 0c7859fbfc27ec24d9542020938be492, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
