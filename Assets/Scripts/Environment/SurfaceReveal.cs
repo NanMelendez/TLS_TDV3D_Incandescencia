@@ -32,6 +32,6 @@ public class SurfaceReveal : MonoBehaviour
 
     private bool AllVarsSet()
     {
-        return src && mat;
+        return src && mat && playerLight && diffuseMap;
     }
 }
