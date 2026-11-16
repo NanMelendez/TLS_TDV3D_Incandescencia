@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class PuzzleSignalReceiver : PuzzleComponent, IPuzzleProgressProvider
 {
-	[SerializeField] private List<PuzzleComponent> puzzleActivators = new();
+	public List<PuzzleComponent> puzzleActivators = new();
 	public UnityEvent OnActivated;
 	public UnityEvent OnDeactivated;
 

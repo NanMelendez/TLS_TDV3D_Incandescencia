@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4421038222185163634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8544731052256261275}
+  - component: {fileID: 6250945207557795538}
+  m_Layer: 0
+  m_Name: RoomGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8544731052256261275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421038222185163634}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6250945207557795538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421038222185163634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3772ca74fcb184409bf4213ae1bb5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomGenerator
+  maxPuzzleNodeBranching: 2
+  rooms:
+  - roomPrefab: {fileID: 371290340793627587, guid: 7710b22d856e43249bf4ce6aac78706f, type: 3}
+    weight: 0.2
+    maxPuzzleDepth: 1
+  - roomPrefab: {fileID: 5499441304543681539, guid: 8f965705ad0ed614d9b3c45b2bcdda74, type: 3}
+    weight: 0.5
+    maxPuzzleDepth: 2
+  - roomPrefab: {fileID: 332409891631622662, guid: ef786d2c339d5a84799bd76f7378587d, type: 3}
+    weight: 0.3
+    maxPuzzleDepth: 4
+  doorPrefab: {fileID: 4532454678099834545, guid: 908bd3842a1fef746b3af200bab02f46, type: 3}
+  puzzleComponentPrefabs:
+  - pcPrefab: {fileID: 4499137092900007165, guid: 49ea687a40dc0da4aa7278d205a99465, type: 3}
+    type: 0
+    heightOffset: 1.5
+  - pcPrefab: {fileID: 2952404768539287438, guid: fde1dd60e9183ae47849cf1e2042b52f, type: 3}
+    type: 1
+    heightOffset: 1.5
+  - pcPrefab: {fileID: 5056551856738192307, guid: 259b090aecf540a4e8f639c7ea887c3e, type: 3}
+    type: 2
+    heightOffset: 1.5
+  - pcPrefab: {fileID: 6083180478836236805, guid: f074858adbed5e74b82fa37f0ba37b4e, type: 3}
+    type: 3
+    heightOffset: 1.3
+  - pcPrefab: {fileID: 115361145624058547, guid: 3b071dafc6a7bcb478501e224f1ff486, type: 3}
+    type: 4
+    heightOffset: 1.3
+  - pcPrefab: {fileID: 8271994066456203920, guid: 51451223c4c6c0640ac9249d04fe4c0c, type: 3}
+    type: 5
+    heightOffset: 0.75
+  playerSpawnpointName: SPAWN_JUGADOR
+  doorSpawnpointName: ANCLAJE_PUERTA
+  puzzleComponentsAnchorName: ==== COMPONENTES ====
+  propsAnchorName: ==== PROPS ====
