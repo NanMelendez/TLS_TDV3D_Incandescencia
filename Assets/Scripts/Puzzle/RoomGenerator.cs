@@ -14,11 +14,9 @@ public class RoomGenerator : MonoBehaviour
 
 	public enum PuzzleComponentType
 	{
-		ButtonCountdown,
-		ButtonToggle,
-		PasswordInput,
-		CollectibleKeys,
-		CollectibleGears,
+		Button,
+		Password,
+		Collectibles,
 		LightMaze
 	}
 
@@ -28,9 +26,11 @@ public class RoomGenerator : MonoBehaviour
 		public GameObject pcPrefab;
 		public PuzzleComponentType type;
 		[Min(0.0f)] public float heightOffset;
+		[Min(0.0f)] public float weight;
 	}
 
 	[Range(1, 2)] public int maxPuzzleNodeBranching = 3;
+	[Range(0.0f, 1.0f)] public float signalReceiverGenerationChance = 0.4f;
     public GameObject doorPrefab;
     public List<WeightedRoom> rooms = new();
 	public List<PuzzleComponentGen> puzzleComponentPrefabs;
