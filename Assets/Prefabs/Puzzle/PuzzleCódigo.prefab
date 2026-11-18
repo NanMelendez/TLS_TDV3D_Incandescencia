@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5683185309281634919}
+  - component: {fileID: 2430478823133416290}
+  - component: {fileID: 7363729677177437818}
   m_Layer: 0
   m_Name: "PuzzleC\xF3digo"
   m_TagString: Untagged
@@ -33,6 +35,35 @@ Transform:
   - {fileID: 9166312525916875790}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2430478823133416290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755867052448177081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcb4ab44b866bf4f9f258d203899a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleUIPassword
+  passwordReceiver: {fileID: 5393754225796491561}
+  TmpText: {fileID: 6921932479285283147}
+--- !u!114 &7363729677177437818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755867052448177081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ab0c69d53496046b2d97a0424ba411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeDisplay
+  pR: {fileID: 5393754225796491561}
+  tmpText: {fileID: 0}
+  showExpectedCode: 1
 --- !u!1001 &4678680382490813747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,6 +126,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5204224211076609685, guid: 22b86496f8db2da4eab77a9a0cb65a02, type: 3}
   m_PrefabInstance: {fileID: 4678680382490813747}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5393754225796491561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 735342248357039130, guid: 22b86496f8db2da4eab77a9a0cb65a02, type: 3}
+  m_PrefabInstance: {fileID: 4678680382490813747}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d13c4ef274f3754eb4c16115efc4144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzlePasswordReceiver
+--- !u!114 &6921932479285283147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2369359522251533432, guid: 22b86496f8db2da4eab77a9a0cb65a02, type: 3}
+  m_PrefabInstance: {fileID: 4678680382490813747}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &6685280229493877631
 PrefabInstance:
   m_ObjectHideFlags: 0
