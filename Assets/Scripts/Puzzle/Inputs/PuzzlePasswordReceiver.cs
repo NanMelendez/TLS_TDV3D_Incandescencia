@@ -17,8 +17,17 @@ public class PuzzlePasswordReceiver : PuzzleComponent
     public string ExpectedPassword => expectedPassword;
     public event Action<string> OnInputChanged;
 
+    /*
     private void Start()
     {
+        OnInputChanged?.Invoke(currentInput);
+    }
+    */
+
+    public void Init(string input, int maxChars = 10)
+    {
+        expectedPassword = input;
+        maxCharacters = maxChars;
         OnInputChanged?.Invoke(currentInput);
     }
 

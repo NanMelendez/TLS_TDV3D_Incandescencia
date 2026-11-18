@@ -24,18 +24,29 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 		guim = FindFirstObjectByType<GameplayUIManager>();
 
 		foreach (Transform child in piecesBase)
-		{
-			child.gameObject.SetActive(false);
-			piecesGOs.Add(child.gameObject);
-		}
+            piecesGOs.Add(child.gameObject);
+    }
+
+	/*
+	private void Start()
+	{
+        PieceSpreadManager.Instance.SpawnPieces(navmeshAreaName, piecesGOs.Count, expectedType, pieceInstance, fakePieceInstance, fakePieceSpawnChance);
+    }
+	*/
+
+	public void Init()
+	{
+		Scatter();
 	}
 
-    private void Start()
-    {
+	public void Scatter()
+	{
+        foreach (Transform child in piecesBase)
+            child.gameObject.SetActive(false);
         PieceSpreadManager.Instance.SpawnPieces(navmeshAreaName, piecesGOs.Count, expectedType, pieceInstance, fakePieceInstance, fakePieceSpawnChance);
     }
 
-    public void Interact()
+	public void Interact()
 	{
 		PlayerPickupCollector playerCollector = FindFirstObjectByType<PlayerPickupCollector>();
 		CollectibleData heldPiece = playerCollector.HeldPiece;
@@ -47,37 +58,37 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 
 			if (heldPiece.isFake)
 				playerCollector.Consume();
-            return;
-        }
+			return;
+		}
 
 		if (!playerCollector)
 		{
 			if (guim)
 				guim.HandleMessageText("A mis creadores les faltó darme un \"PlayerPickupCollector\" >:(");
-            AudioManager.Instance.SFXError();
-            return;
-        }
+			AudioManager.Instance.SFXError();
+			return;
+		}
 
 		if (!playerCollector.HoldingPiece)
 		{
 			if (guim)
 				guim.HandleMessageText("Cierto, tengo que recoger una pieza...");
-            return;
-        }
+			return;
+		}
 		if (heldPiece.type != expectedType)
 		{
 			if (guim)
 				guim.HandleMessageText("Ay. Esto no encaja aquí");
 			AudioManager.Instance.SFXError();
 			return;
-        }
+		}
 
-        if (heldPiece.isFake)
+		if (heldPiece.isFake)
 		{
 			if (guim)
 				guim.HandleMessageText("Pucha, esta pieza es falsa. Mejor la descarto");
-            AudioManager.Instance.SFXError();
-            playerCollector.Consume();
+			AudioManager.Instance.SFXError();
+			playerCollector.Consume();
 			return;
 		}
 
@@ -91,8 +102,8 @@ public class PuzzlePieceReceptacle : PuzzleComponent, IPuzzleProgressProvider, I
 			if (collectedCount == MaxProgress)
 			{
 				AudioManager.Instance.SFXActivationDefault();
-                Activate();
-            }
+				Activate();
+			}
 		}
 	}
 }

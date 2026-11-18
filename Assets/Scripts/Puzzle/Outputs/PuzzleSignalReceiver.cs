@@ -14,16 +14,25 @@ public class PuzzleSignalReceiver : PuzzleComponent, IPuzzleProgressProvider
 	public int MaxProgress => puzzleActivators.Count;
 	public int CurrentProgress => puzzleActivators.Cast<IPuzzleActivator>().Count(activator => activator.IsActive);
 
-	private void Awake()
-	{
-		foreach (IPuzzleActivator activator in puzzleActivators.Cast<IPuzzleActivator>())
-			activator.OnStateChanged += OnActivatorStateChanged;
+	/*
+    private void Awake()
+    {
+        foreach (IPuzzleActivator activator in puzzleActivators.Cast<IPuzzleActivator>())
+            activator.OnStateChanged += OnActivatorStateChanged;
     }
+	*/
 
     private void OnDestroy()
     {
 		foreach (IPuzzleActivator activator in puzzleActivators.Cast<IPuzzleActivator>())
 			activator.OnStateChanged -= OnActivatorStateChanged;
+    }
+
+	public void Init(List<PuzzleComponent> activators)
+	{
+		puzzleActivators = activators;
+        foreach (IPuzzleActivator activator in puzzleActivators.Cast<IPuzzleActivator>())
+            activator.OnStateChanged += OnActivatorStateChanged;
     }
 
     private void OnActivatorStateChanged(bool newState)

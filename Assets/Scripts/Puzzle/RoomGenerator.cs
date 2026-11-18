@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class RoomGenerator : MonoBehaviour
 {
@@ -78,7 +79,7 @@ public class RoomGenerator : MonoBehaviour
 
 		puzzleComponents.Add(Instantiate(doorPrefab, doorSpawn.position, doorSpawn.rotation, doorSpawn));
 
-		CreateNode(puzzleComponents[0].GetComponentInChildren<PuzzleSignalReceiver>(), 0);
+		CreateNode(puzzleComponents[0].GetComponentInChildren<PuzzleSignalReceiver>(), puzzleComponentsAnchor, 0);
 	}
 
 	private GameObject SelectRoomWeighted()
@@ -111,9 +112,37 @@ public class RoomGenerator : MonoBehaviour
 		return null;
 	}
 
-	private void CreateNode(PuzzleSignalReceiver parent, int level)
+	private PuzzleComponentGen SelectComponenteWeighted()
 	{
-		int branchingCount = UnityEngine.Random.Range(1, maxPuzzleNodeBranching);
+		float totalWeight = 0.0f;
+		foreach (PuzzleComponentGen compGen in puzzleComponentPrefabs)
+			totalWeight += compGen.weight;
+
+		if (totalWeight <= 0.0f)
+			return default;
+
+		float rndWeight = UnityEngine.Random.Range(0, totalWeight);
+
+		foreach (PuzzleComponentGen compGen in puzzleComponentPrefabs)
+		{
+			if (compGen.weight <= 0.0f)
+				continue;
+
+			rndWeight -= compGen.weight;
+
+			if (rndWeight < 0.0f)
+				return compGen;
+		}
+
+		return default;
+	}
+
+    private void CreateNode(PuzzleSignalReceiver parent, Transform componentsAnchor, int level)
+	{
+		if (level >= maxPuzzleDepth)
+			return;
+
+		int branchingCount = UnityEngine.Random.Range(1, maxPuzzleNodeBranching + 1);
 
 		for (int i = 0; i < branchingCount; i++)
 		{
@@ -121,21 +150,34 @@ public class RoomGenerator : MonoBehaviour
 
 			if (n < signalReceiverGenerationChance)
 			{
+				if (TryRandomPlacement(signalReceiverPrefab, 1.5f, out Vector3 position, out Vector3 normal))
+				{
+                    GameObject sri = Instantiate(signalReceiverPrefab, position, Quaternion.LookRotation(normal, Vector3.up), componentsAnchor);
+                    PuzzleSignalReceiver psr = sri.GetComponentInChildren<PuzzleSignalReceiver>();
 
+                    puzzleComponents.Add(sri);
+                    parent.puzzleActivators.Add(psr);
+                    CreateNode(psr, componentsAnchor, level + 1);
+                }
 			}
 			else
 			{
+				PuzzleComponentGen compGen = SelectComponenteWeighted();
+				
+				if (TryRandomPlacement(compGen.pcPrefab, compGen.heightOffset, out Vector3 position, out Vector3 normal))
+				{
 
+				}
 			}
 		}
 	}
 
-	private bool TryRandomPlacement(GameObject targetRoom, GameObject component, float verticalOffset, out Vector3 position, out Vector3 normal)
+	private bool TryRandomPlacement(GameObject component, float verticalOffset, out Vector3 position, out Vector3 normal)
 	{
 		position = Vector3.zero;
 		normal = Vector3.zero;
 
-		Transform roomCenter = targetRoom.transform;
+		Transform roomCenter = currentRoom.transform;
 
 		for (int i = 0; i < maxComponentGenerationAttemps; i++)
 		{
@@ -148,7 +190,6 @@ public class RoomGenerator : MonoBehaviour
 
 			Vector3 candidateNormal = hit.normal;
 
-			// Vector3 candidatePosition = hit.point + Vector3.up * verticalOffset;
 			Vector3 candidatePosition = new(hit.point.x, verticalOffset, hit.point.z);
 
 			if (!IsPositionAvailable(candidatePosition, component, candidateNormal))
@@ -163,10 +204,7 @@ public class RoomGenerator : MonoBehaviour
 		return false;
 	}
 
-	private bool IsPositionAvailable(
-	Vector3 position,
-	GameObject component,
-	Vector3 normal)
+	private bool IsPositionAvailable(Vector3 position, GameObject component, Vector3 normal)
 	{
 		BoxCollider box = component.GetComponentInChildren<BoxCollider>();
 

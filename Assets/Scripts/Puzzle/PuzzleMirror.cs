@@ -9,12 +9,26 @@ public class PuzzleMirror : MonoBehaviour, IInteractable
 
 	private Vector2Int rotationsCount = Vector2Int.zero;
 
+    private void Awake()
+    {
+        if (!mirrorPivot)
+            mirrorPivot = transform;
+    }
+
+	/*
     private void Start()
     {
-		if (!mirrorPivot)
-			mirrorPivot = transform;
 		rotationsCount = initialSteps * new Vector2Int(verticalRotation ? 0 : 1, verticalRotation ? 1 : 0);
 		ApplyRotation();
+    }
+	*/
+
+	public void Init(int initSteps)
+	{
+		initialSteps = initSteps;
+
+        rotationsCount = initialSteps * new Vector2Int(verticalRotation ? 0 : 1, verticalRotation ? 1 : 0);
+        ApplyRotation();
     }
 
     public void Interact()
