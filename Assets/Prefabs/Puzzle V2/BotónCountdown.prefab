@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8947252760370647942}
   - component: {fileID: 4386885432350073055}
   - component: {fileID: 9058772723424599896}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: PuzzleComponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

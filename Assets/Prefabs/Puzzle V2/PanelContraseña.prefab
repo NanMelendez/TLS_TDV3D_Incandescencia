@@ -2002,7 +2002,7 @@ GameObject:
   - component: {fileID: 5198965855096980988}
   - component: {fileID: 6713789133928222651}
   - component: {fileID: 1371702429060443311}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ModeloBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

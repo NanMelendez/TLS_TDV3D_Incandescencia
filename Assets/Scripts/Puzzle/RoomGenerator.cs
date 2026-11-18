@@ -29,11 +29,16 @@ public class RoomGenerator : MonoBehaviour
 		[Min(0.0f)] public float weight;
 	}
 
-	[Range(1, 2)] public int maxPuzzleNodeBranching = 3;
+	[Range(1, 3)] public int maxPuzzleNodeBranching = 3;
 	[Range(0.0f, 1.0f)] public float signalReceiverGenerationChance = 0.4f;
-    public GameObject doorPrefab;
-    public List<WeightedRoom> rooms = new();
-	public List<PuzzleComponentGen> puzzleComponentPrefabs;
+	[Min(1)] public int maxComponentGenerationAttemps = 20;
+	public LayerMask wallLayerMask;
+	public LayerMask componentLayerMask;
+	public GameObject doorPrefab;
+	public List<WeightedRoom> rooms = new();
+	public GameObject signalReceiverPrefab;
+	public List<PuzzleComponentGen> puzzleComponentPrefabs = new();
+	public Transform roomGenAnchor;
 	public string playerSpawnpointName = "SPAWN_JUGADOR";
 	public string doorSpawnpointName = "ANCLAJE_PUERTA";
 	public string puzzleComponentsAnchorName = "==== COMPONENTES ====";
@@ -44,6 +49,7 @@ public class RoomGenerator : MonoBehaviour
 	private List<GameObject> roomProps = new();
 	private List<GameObject> puzzleComponents = new();
 	private List<GameObject> collectiblePieces = new();
+	private int maxPuzzleDepth;
 
 	private void Awake()
 	{
@@ -55,19 +61,13 @@ public class RoomGenerator : MonoBehaviour
 		if (currentRoom != null)
 		{
 			Destroy(currentRoom);
-			
-			foreach(GameObject prop in roomProps)
-				Destroy(prop);
+
 			roomProps.Clear();
-			foreach (GameObject pComponent in puzzleComponents)
-				Destroy(pComponent);
 			puzzleComponents.Clear();
-			foreach (GameObject colPiece in collectiblePieces)
-				Destroy(colPiece);
 			collectiblePieces.Clear();
 		}
 
-		currentRoom = SelectRoomWeighted();
+		currentRoom = Instantiate(SelectRoomWeighted(), roomGenAnchor);
 
 		Transform playerSpawn = currentRoom.transform.Find(playerSpawnpointName);
 		Transform doorSpawn = currentRoom.transform.Find(doorSpawnpointName);
@@ -76,60 +76,122 @@ public class RoomGenerator : MonoBehaviour
 
 		player.transform.SetPositionAndRotation(playerSpawn.position, playerSpawn.rotation);
 
-        /*
-		 * Proceso de generación de la habitación
-		 * =======================================
-		 * 1. Eliminar habitación existente e instanciar cualquiera de los 3 prefabs de habitaciones
-		 * 2. Teleportar al jugador a playerSpawn
-		 * 3. Generar puerta (nodo padre del puzzle / PuzzleSignalReceiver maestro)
-		 * 4. Primer bake del NavMesh Area
-		 * 5. Generar puzzle:
-		 *      5.1. Del nodo padre se generará un número aleatorio (1 - N) de nodos hijos
-		 *      5.2. Cada nodo hijo tiene un 50/50 de convertirse en un PuzzleSignalReceiver o cualquiera de los otros PuzzleComponents
-		 *			(Si es de tipo "Puzzle Maze")
-		 *				- Desde el receptor se lanzará un rayo de longitud aleatoria. Al final del tramo se generará un espejo y se apuntará a una dirección aleatoria
-		 *				- Repetir el paso anterior por cada espejo generado hasta alcanzar una profundidad L
-		 *				- En el último nivel de profundidad, lanzar un rayo hasta la pared y generar un emisor
-		 *				- Se generará un botón countdown / toggle
-		 *			(Si es de tipo PasswordInput)
-		 *				- Crear superficie secreta con espacio para texto
-		 *				- Obtener la contraseña del componente y asignarlo a este texto
-		 *			(Si es de tipo Button Countdown / Toggle)
-		 *				- Hay una probabilidad P que se genere un SignalReceiver conectado a un foco
-		 *			- Cada componente debe tener un NavMesh Obstacle para reducir el espacio de generación y evitar solapamientos
-		 *			- Emparentar el componente generado al ancla "puzzleComponentsAnchor"
-		 *		5.3. Cualquier PuzzleComponent generado será anexado a la lista de componentes del SignalReceiver padre
-		 *		5.4. Repetir todo el proceso por cada nodo SignalReceiver.
-		 *	6. Generar props
-		 *		6.1. Se pueden generar un máximo de M props
-		 *		6.2. Cada prop debe incluir un NavMesh Obstacle para restar espacio de generación
-		 *		6.3. Se generará un prop en una posición y rotación aleatorias dentro del NavMesh Area
-		 *	7. Re-bakear el NavMesh Area
-		 *	8. Para todos los componentes PieceReceptacle
-		 *		8.1. Invocar la función de esparcimiento de piezas del PieceSpreadManager
-		 *		8.2. Cada pieza debe contener su propio NavMesh Obstacle
-		 */
+		puzzleComponents.Add(Instantiate(doorPrefab, doorSpawn.position, doorSpawn.rotation, doorSpawn));
 
-        puzzleComponents.Add(Instantiate(doorPrefab, doorSpawn.position, doorSpawn.rotation, doorSpawn));
+		CreateNode(puzzleComponents[0].GetComponentInChildren<PuzzleSignalReceiver>(), 0);
 	}
 
 	private GameObject SelectRoomWeighted()
 	{
 		float totalWeight = 0.0f;
 		foreach (WeightedRoom room in rooms)
-			totalWeight += 1.0f / room.weight;
+			totalWeight += room.weight;
+
+		maxPuzzleDepth = 0;
+
+		if (totalWeight <= 0.0f)
+			return null;
 
 		float rndWeight = UnityEngine.Random.Range(0, totalWeight);
 
-		float cumulativeWeight = 0.0f;
 		foreach (WeightedRoom room in rooms)
 		{
-			cumulativeWeight += room.weight;
+			if (room.weight <= 0.0f)
+				continue;
 
-			if (rndWeight < cumulativeWeight)
+			rndWeight -= room.weight;
+
+			if (rndWeight < 0.0f)
+			{
+				maxPuzzleDepth = room.maxPuzzleDepth;
 				return room.roomPrefab;
+			}
 		}
 
-		return rooms[^1].roomPrefab;
+		return null;
+	}
+
+	private void CreateNode(PuzzleSignalReceiver parent, int level)
+	{
+		int branchingCount = UnityEngine.Random.Range(1, maxPuzzleNodeBranching);
+
+		for (int i = 0; i < branchingCount; i++)
+		{
+			float n = UnityEngine.Random.Range(0.0f, 1.0f);
+
+			if (n < signalReceiverGenerationChance)
+			{
+
+			}
+			else
+			{
+
+			}
+		}
+	}
+
+	private bool TryRandomPlacement(GameObject targetRoom, GameObject component, float verticalOffset, out Vector3 position, out Vector3 normal)
+	{
+		position = Vector3.zero;
+		normal = Vector3.zero;
+
+		Transform roomCenter = targetRoom.transform;
+
+		for (int i = 0; i < maxComponentGenerationAttemps; i++)
+		{
+			Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
+
+			Vector3 direction = new(randomDirection.x, 0.0f, randomDirection.y);
+
+			if (!Physics.Raycast(roomCenter.position, direction, out RaycastHit hit, 200, wallLayerMask))
+				continue;
+
+			Vector3 candidateNormal = hit.normal;
+
+			// Vector3 candidatePosition = hit.point + Vector3.up * verticalOffset;
+			Vector3 candidatePosition = new(hit.point.x, verticalOffset, hit.point.z);
+
+			if (!IsPositionAvailable(candidatePosition, component, candidateNormal))
+				continue;
+
+			position = candidatePosition;
+			normal = candidateNormal;
+
+			return true;
+		}
+
+		return false;
+	}
+
+	private bool IsPositionAvailable(
+	Vector3 position,
+	GameObject component,
+	Vector3 normal)
+	{
+		BoxCollider box = component.GetComponentInChildren<BoxCollider>();
+
+		if (!box)
+			return false;
+
+		Transform root = component.transform;
+		Transform boxTransform = box.transform;
+
+		Quaternion rootRotation = Quaternion.LookRotation(normal, Vector3.up);
+
+		Vector3 localCenter = root.InverseTransformPoint(boxTransform.TransformPoint(box.center));
+
+		Vector3 center = position + rootRotation * Vector3.Scale(localCenter, root.lossyScale);
+
+		Quaternion relativeRotation = Quaternion.Inverse(root.rotation) * boxTransform.rotation;
+
+		Quaternion boxRotation = rootRotation * relativeRotation;
+
+		Vector3 scale = boxTransform.lossyScale;
+
+		Vector3 halfExtents = Vector3.Scale(box.size * 0.5f, new Vector3(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z)));
+
+		Collider[] collisions = Physics.OverlapBox(center, halfExtents, boxRotation, componentLayerMask, QueryTriggerInteraction.Ignore);
+
+		return collisions.Length == 0;
 	}
 }

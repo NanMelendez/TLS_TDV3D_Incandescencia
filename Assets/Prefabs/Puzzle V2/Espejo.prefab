@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3021107661349938587}
   - component: {fileID: 4853163160619371149}
   - component: {fileID: 3574815467213436335}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Reverso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 3859122841032666659}
   - component: {fileID: 1367289135966394839}
   - component: {fileID: 5877259786926767236}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

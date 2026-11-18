@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 7134151513492264665}
   - component: {fileID: 1187079288128268176}
   - component: {fileID: 6214299166142482282}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ MonoBehaviour:
     m_Bits: 256
   collidableLayers:
     serializedVersion: 2
-    m_Bits: 328
+    m_Bits: 840
   line: {fileID: 4242599836352817922}
   maxDistance: 128
   maxBounces: 32

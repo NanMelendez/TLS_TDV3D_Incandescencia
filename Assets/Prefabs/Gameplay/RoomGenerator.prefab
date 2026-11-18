@@ -46,6 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomGenerator
   maxPuzzleNodeBranching: 2
   signalReceiverGenerationChance: 0.4
+  maxComponentGenerationAttemps: 20
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  componentLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   doorPrefab: {fileID: 4532454678099834545, guid: 908bd3842a1fef746b3af200bab02f46, type: 3}
   rooms:
   - roomPrefab: {fileID: 371290340793627587, guid: 7710b22d856e43249bf4ce6aac78706f, type: 3}
@@ -57,31 +64,32 @@ MonoBehaviour:
   - roomPrefab: {fileID: 332409891631622662, guid: ef786d2c339d5a84799bd76f7378587d, type: 3}
     weight: 0.3
     maxPuzzleDepth: 4
+  signalReceiverPrefab: {fileID: 60470739898366285, guid: db9ccd3b328ed914e914e695471fa37f, type: 3}
   puzzleComponentPrefabs:
   - pcPrefab: {fileID: 4499137092900007165, guid: 49ea687a40dc0da4aa7278d205a99465, type: 3}
     type: 0
     heightOffset: 1.5
-    weight: 0
+    weight: 0.15
   - pcPrefab: {fileID: 2952404768539287438, guid: fde1dd60e9183ae47849cf1e2042b52f, type: 3}
     type: 0
     heightOffset: 1.5
-    weight: 0
+    weight: 0.15
   - pcPrefab: {fileID: 5056551856738192307, guid: 259b090aecf540a4e8f639c7ea887c3e, type: 3}
     type: 1
     heightOffset: 1.5
-    weight: 0
+    weight: 0.15
   - pcPrefab: {fileID: 6083180478836236805, guid: f074858adbed5e74b82fa37f0ba37b4e, type: 3}
     type: 2
     heightOffset: 1.3
-    weight: 0
+    weight: 0.2
   - pcPrefab: {fileID: 115361145624058547, guid: 3b071dafc6a7bcb478501e224f1ff486, type: 3}
     type: 2
     heightOffset: 1.3
-    weight: 0
+    weight: 0.2
   - pcPrefab: {fileID: 8271994066456203920, guid: 51451223c4c6c0640ac9249d04fe4c0c, type: 3}
     type: 3
     heightOffset: 0.75
-    weight: 0
+    weight: 0.15
   playerSpawnpointName: SPAWN_JUGADOR
   doorSpawnpointName: ANCLAJE_PUERTA
   puzzleComponentsAnchorName: ==== COMPONENTES ====

@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 5881517364018052112}
   - component: {fileID: 3503319229630518917}
   - component: {fileID: 260957167238812086}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ModeloBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

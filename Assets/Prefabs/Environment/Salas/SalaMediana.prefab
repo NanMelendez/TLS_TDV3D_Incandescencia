@@ -76,9 +76,9 @@ GameObject:
   - component: {fileID: 4483214786494424911}
   - component: {fileID: 330116557256982431}
   - component: {fileID: 239584596649696977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pared
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -737,9 +737,9 @@ GameObject:
   - component: {fileID: 7454771261457713261}
   - component: {fileID: 7245792361655947787}
   - component: {fileID: 1935678099508130543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pared
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1118,9 +1118,9 @@ GameObject:
   - component: {fileID: 5928616924262089218}
   - component: {fileID: 899325181490275107}
   - component: {fileID: 4253173595661310313}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pared
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1561,9 +1561,9 @@ GameObject:
   - component: {fileID: 1984909502700711775}
   - component: {fileID: 1605653273373063608}
   - component: {fileID: 6490685792969047900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pared
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1973,9 +1973,9 @@ GameObject:
   - component: {fileID: 5012452301187419911}
   - component: {fileID: 3990390221202263215}
   - component: {fileID: 1924822546426775054}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Piso
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
