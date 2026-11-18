@@ -20382,14 +20382,6 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3157124862172235658, guid: 0c7859fbfc27ec24d9542020938be492, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 3157124862172235658, guid: 0c7859fbfc27ec24d9542020938be492, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 70
-      objectReference: {fileID: 0}
     - target: {fileID: 3802467293426537926, guid: 0c7859fbfc27ec24d9542020938be492, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -20606,18 +20598,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7137816151843068272, guid: 24f7a4becb5ab1445befd62672d795f1, type: 3}
-      propertyPath: sfxError
-      value: 
-      objectReference: {fileID: 8300000, guid: 9c1f12d51bbb42e419283f208aabbb2c, type: 3}
-    - target: {fileID: 7137816151843068272, guid: 24f7a4becb5ab1445befd62672d795f1, type: 3}
-      propertyPath: sfxSecret
-      value: 
-      objectReference: {fileID: 8300000, guid: da6927a6a41baae4d9071a5492ead420, type: 3}
-    - target: {fileID: 7137816151843068272, guid: 24f7a4becb5ab1445befd62672d795f1, type: 3}
-      propertyPath: sfxActivateDefault
-      value: 
-      objectReference: {fileID: 8300000, guid: 1da1952f61640a1468b41c42d615c9f0, type: 3}
     - target: {fileID: 7829389323874736653, guid: 24f7a4becb5ab1445befd62672d795f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.62045
