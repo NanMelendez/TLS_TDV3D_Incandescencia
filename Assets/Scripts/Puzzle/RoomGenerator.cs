@@ -39,6 +39,7 @@ public class RoomGenerator : MonoBehaviour
 	public List<WeightedRoom> rooms = new();
 	public GameObject signalReceiverPrefab;
 	public List<PuzzleComponentGen> puzzleComponentPrefabs = new();
+	public GameObject passwordDisplayPrefab;
 	public Transform roomGenAnchor;
 	public string playerSpawnpointName = "SPAWN_JUGADOR";
 	public string doorSpawnpointName = "ANCLAJE_PUERTA";
@@ -191,12 +192,23 @@ public class RoomGenerator : MonoBehaviour
 							parent.puzzleActivators.Add(ppwdr);
 
 							// Generar contraseña aleatoria y pegarla a un TMP para colocarlo en cualquier pared
+							GenerateRandomPasswordSurface(ppwdr);
 
 							break;
 					}
 				}
 			}
 		}
+	}
+
+	private void GenerateMirrorMaze()
+	{
+
+	}
+
+	private void GenerateRandomPasswordSurface(PuzzlePasswordReceiver ppwdr)
+	{
+		// ....
 	}
 
 	private bool TryRandomPlacement(GameObject component, float verticalOffset, out Vector3 position, out Vector3 normal)
