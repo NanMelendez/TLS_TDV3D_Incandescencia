@@ -6,15 +6,18 @@ public class MonsterSummonManager : MonoBehaviour
 {
     [SerializeField][Min(0.0f)] private float countdown;
     [SerializeField] private MonsterSpawner spawner;
+    public int monsterTeleportStep = 26;
 
     private List<LightSrcComponent> lights = new();
     private bool monsterHasBeenSummoned = false;
     private int activeLightsCount = 0;
+    private float backupCountdown;
 
     public float CountdownTimer => countdown;
 
     private void Awake()
     {
+        backupCountdown = countdown;
         lights = FindObjectsByType<LightSrcComponent>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
 
         foreach (LightSrcComponent light in lights)
@@ -53,5 +56,14 @@ public class MonsterSummonManager : MonoBehaviour
     {
         Debug.Log("¡CORRE HVÓN!");
         spawner.Spawn();
+    }
+
+    public void ResetTimer()
+    {
+        countdown = backupCountdown;
+
+        Transform spawnerTransform = spawner.transform.parent;
+
+		spawnerTransform.position = new Vector3(spawnerTransform.position.x, spawnerTransform.position.y, spawnerTransform.position.z + monsterTeleportStep);
     }
 }
