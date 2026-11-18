@@ -17,8 +17,7 @@ public class PuzzleSignalReceiver : PuzzleComponent, IPuzzleProgressProvider
 	/*
     private void Awake()
     {
-        foreach (IPuzzleActivator activator in puzzleActivators.Cast<IPuzzleActivator>())
-            activator.OnStateChanged += OnActivatorStateChanged;
+        Init();
     }
 	*/
 

@@ -166,7 +166,34 @@ public class RoomGenerator : MonoBehaviour
 				
 				if (TryRandomPlacement(compGen.pcPrefab, compGen.heightOffset, out Vector3 position, out Vector3 normal))
 				{
+                    GameObject iComponent = Instantiate(compGen.pcPrefab, position, Quaternion.LookRotation(normal, Vector3.up), componentsAnchor);
+                    puzzleComponents.Add(iComponent);
 
+                    switch (compGen.type)
+					{
+						case PuzzleComponentType.Button:
+							PuzzleButton pb = iComponent.GetComponentInChildren<PuzzleButton>();
+							parent.puzzleActivators.Add(pb);
+							break;
+						case PuzzleComponentType.Collectibles:
+							PuzzlePieceReceptacle ppr = iComponent.GetComponent<PuzzlePieceReceptacle>();
+							parent.puzzleActivators.Add(ppr);
+							break;
+						case PuzzleComponentType.LightMaze:
+							PuzzleLaserReceiver plr = iComponent.GetComponent<PuzzleLaserReceiver>();
+							parent.puzzleActivators.Add(plr);
+							
+							// Generar el maze de luces aquí
+
+							break;
+						case PuzzleComponentType.Password:
+							PuzzlePasswordReceiver ppwdr = iComponent.GetComponent<PuzzlePasswordReceiver>();
+							parent.puzzleActivators.Add(ppwdr);
+
+							// Generar contraseña aleatoria y pegarla a un TMP para colocarlo en cualquier pared
+
+							break;
+					}
 				}
 			}
 		}

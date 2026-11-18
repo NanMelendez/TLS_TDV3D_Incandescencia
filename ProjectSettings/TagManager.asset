@@ -10,6 +10,7 @@ TagManager:
   - GameManager
   - Wall
   - Ground
+  - MonsterAnchor
   layers:
   - Default
   - TransparentFX

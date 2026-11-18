@@ -11,17 +11,20 @@ public class MonsterSummonManager : MonoBehaviour
     private bool monsterHasBeenSummoned = false;
     private int activeLightsCount = 0;
 
-    public float CountdownTimer => countdown;
-
-    private void Awake()
-    {
-        lights = FindObjectsByType<LightSrcComponent>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
-
-        foreach (LightSrcComponent light in lights)
+    public float CountdownTimer {
+        get => countdown;
+        set
         {
-            light.OnStateChanged += HandleLightsStateChanged;
+            countdown = value;
         }
     }
+
+    /*
+    private void Awake()
+    {
+        Init();
+    }
+    */
 
     private void Update()
     {
@@ -41,6 +44,23 @@ public class MonsterSummonManager : MonoBehaviour
         }
     }
 
+    public void Init(float countdown, MonsterSpawner spawner = null)
+    {
+        Configure(countdown, spawner);
+    }
+
+    public void Configure(float countdown, MonsterSpawner spawner = null)
+    {
+        lights.Clear();
+        activeLightsCount = 0;
+        this.spawner = spawner;
+        this.countdown = countdown;
+        lights = FindObjectsByType<LightSrcComponent>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
+
+        foreach (LightSrcComponent light in lights)
+            light.OnStateChanged += HandleLightsStateChanged;
+    }
+
     private void HandleLightsStateChanged(bool isOn)
     {
         if (isOn)
@@ -51,7 +71,6 @@ public class MonsterSummonManager : MonoBehaviour
 
     private void Summon()
     {
-        Debug.Log("¡CORRE HVÓN!");
         spawner.Spawn();
     }
 }

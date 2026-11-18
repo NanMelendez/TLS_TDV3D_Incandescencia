@@ -36,6 +36,7 @@ public class LightSrcComponent : MonoBehaviour
 
 	private void UpdateLightState()
 	{
-		lightSrc.enabled = isOn;
-	}
+		if (lightSrc)
+            lightSrc.enabled = isOn;
+    }
 }

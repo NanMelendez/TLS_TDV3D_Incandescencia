@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 		if (!gameplayUIManager)
 			return;
 
-        gameplayUIManager.CountdownText = TimeSpan.FromSeconds(monsterSummonManager.CountdownTimer).ToString(@"mm\:ss");
+        gameplayUIManager.CountdownText = monsterSummonManager.CountdownTimer > 0.0f ? TimeSpan.FromSeconds(monsterSummonManager.CountdownTimer).ToString(@"mm\:ss") : "";
     }
 
 	private void OnApplicationFocus(bool focus)
