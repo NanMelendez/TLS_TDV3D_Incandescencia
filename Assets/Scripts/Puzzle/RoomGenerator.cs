@@ -33,8 +33,10 @@ public class RoomGenerator : MonoBehaviour
 	[Range(1, 3)] public int maxPuzzleNodeBranching = 3;
 	[Range(0.0f, 1.0f)] public float signalReceiverGenerationChance = 0.4f;
 	[Min(1)] public int maxComponentGenerationAttemps = 20;
+	[Min(0.0f)] public float passwordSurfaceVerticalOffset = 1.75f;
 	public LayerMask wallLayerMask;
 	public LayerMask componentLayerMask;
+	public LayerMask groundLayerMask;
 	public GameObject doorPrefab;
 	public List<WeightedRoom> rooms = new();
 	public GameObject signalReceiverPrefab;
@@ -178,6 +180,9 @@ public class RoomGenerator : MonoBehaviour
 							break;
 						case PuzzleComponentType.Collectibles:
 							PuzzlePieceReceptacle ppr = iComponent.GetComponent<PuzzlePieceReceptacle>();
+
+							// Init ocurrirá SOLO tras generar todos los componentes de puzzle y props
+
 							parent.puzzleActivators.Add(ppr);
 							break;
 						case PuzzleComponentType.LightMaze:
@@ -191,8 +196,9 @@ public class RoomGenerator : MonoBehaviour
 							PuzzlePasswordReceiver ppwdr = iComponent.GetComponent<PuzzlePasswordReceiver>();
 							parent.puzzleActivators.Add(ppwdr);
 
-							// Generar contraseña aleatoria y pegarla a un TMP para colocarlo en cualquier pared
-							GenerateRandomPasswordSurface(ppwdr);
+							ppwdr.Init(GeneratePassword(ppwdr.MaxCharacters), 5);
+
+							GenerateRandomPasswordSurface(ppwdr, componentsAnchor);
 
 							break;
 					}
@@ -206,9 +212,35 @@ public class RoomGenerator : MonoBehaviour
 
 	}
 
-	private void GenerateRandomPasswordSurface(PuzzlePasswordReceiver ppwdr)
+	private void GenerateRandomPasswordSurface(PuzzlePasswordReceiver ppwdr, Transform componentsAnchor)
 	{
-		// ....
+		Transform roomCenter = currentRoom.transform;
+
+		Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
+
+		Vector3 direction = new(randomDirection.x, 0.0f, randomDirection.y);
+
+		if (!Physics.Raycast(roomCenter.position, direction, out RaycastHit hit, 200, wallLayerMask))
+			return;
+
+		Vector3 normal = hit.normal;
+		Vector3 position = new(hit.point.x, passwordSurfaceVerticalOffset, hit.point.z);
+
+		GameObject temp = Instantiate(passwordDisplayPrefab, position, Quaternion.LookRotation(normal), componentsAnchor);
+		PasswordDisplay pDisp = temp.GetComponentInChildren<PasswordDisplay>();
+
+		pDisp.PasswordText = ppwdr.ExpectedPassword;
+	}
+
+	private string GeneratePassword(int length)
+	{
+		if (length <= 0) return "";
+
+		char[] digits = new char[length];
+		for (int i = 0; i < length; i++)
+			digits[i] = (char)('0' + UnityEngine.Random.Range(0, 10));
+
+		return new string(digits);
 	}
 
 	private bool TryRandomPlacement(GameObject component, float verticalOffset, out Vector3 position, out Vector3 normal)

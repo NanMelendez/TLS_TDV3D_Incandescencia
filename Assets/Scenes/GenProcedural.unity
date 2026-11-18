@@ -941,6 +941,10 @@ PrefabInstance:
       propertyPath: roomGenAnchor
       value: 
       objectReference: {fileID: 468122866}
+    - target: {fileID: 6250945207557795538, guid: 3b7c532d9849ff7498a5c2ab9bf6b3f8, type: 3}
+      propertyPath: groundLayerMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8544731052256261275, guid: 3b7c532d9849ff7498a5c2ab9bf6b3f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
