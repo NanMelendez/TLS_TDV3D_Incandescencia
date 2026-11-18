@@ -23,9 +23,14 @@ public class PuzzleMirror : MonoBehaviour, IInteractable
     }
 	*/
 
-	public void Init(int initSteps)
+	public Vector3 MirrorNormal => mirrorPivot.forward;
+
+	public Vector3 MirrorPosition => mirrorPivot.position;
+
+	public void Init(int initSteps, float rotStep)
 	{
 		initialSteps = initSteps;
+		rotationStep = rotStep;
 
         rotationsCount = initialSteps * new Vector2Int(verticalRotation ? 0 : 1, verticalRotation ? 1 : 0);
         ApplyRotation();

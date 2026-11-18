@@ -34,6 +34,12 @@ public class RoomGenerator : MonoBehaviour
 	[Range(0.0f, 1.0f)] public float signalReceiverGenerationChance = 0.4f;
 	[Min(1)] public int maxComponentGenerationAttemps = 20;
 	[Min(0.0f)] public float passwordSurfaceVerticalOffset = 1.75f;
+	[Range(1.0f, 360.0f)] public float mirrorRotationStep = 45.0f;
+	[Range(3, 12)] public int maxMirrorsPerMaze = 4;
+	public float minMirrorGenerationDistance = 0.1f;
+	public float maxMirrorGenerationDistance = 10.0f;
+	public GameObject mirrorPrefab;
+	public GameObject lightEmitterPrefab;
 	public LayerMask wallLayerMask;
 	public LayerMask componentLayerMask;
 	public LayerMask groundLayerMask;
@@ -188,8 +194,9 @@ public class RoomGenerator : MonoBehaviour
 						case PuzzleComponentType.LightMaze:
 							PuzzleLaserReceiver plr = iComponent.GetComponent<PuzzleLaserReceiver>();
 							parent.puzzleActivators.Add(plr);
-							
+
 							// Generar el maze de luces aquí
+							GenerateMirrorMaze(iComponent.transform, componentsAnchor);
 
 							break;
 						case PuzzleComponentType.Password:
@@ -207,9 +214,57 @@ public class RoomGenerator : MonoBehaviour
 		}
 	}
 
-	private void GenerateMirrorMaze()
+	private void GenerateMirrorMaze(Transform origin, Transform componentsAnchor)
 	{
+		Vector3 position = origin.position;
+		Vector3 direction = origin.forward;
+		int generatedMirrors = 0;
 
+		while (generatedMirrors < maxMirrorsPerMaze)
+		{
+			if (Physics.Raycast(position, direction, out RaycastHit hit, maxMirrorGenerationDistance, wallLayerMask))
+			{
+				Vector3 wallPosition = hit.point;
+				Vector3 wallNormal = hit.normal;
+
+				float alignment = Vector3.Dot(wallNormal, -direction);
+
+				if (alignment < 0.995f)
+					continue;
+
+				GameObject emitter = Instantiate(lightEmitterPrefab, wallPosition, Quaternion.LookRotation(wallNormal, Vector3.up), componentsAnchor);
+				puzzleComponents.Add(emitter);
+
+				break;
+			}
+
+			float distance = UnityEngine.Random.Range(minMirrorGenerationDistance, maxMirrorGenerationDistance);
+
+			Vector3 mirrorGenPosition = position + direction * distance;
+
+			GameObject mirror = Instantiate(mirrorPrefab, new Vector3(mirrorGenPosition.x, 0.0f, mirrorGenPosition.z), Quaternion.identity, componentsAnchor);
+			puzzleComponents.Add(mirror);
+
+			PuzzleMirror mirrorComponent = mirror.GetComponentInChildren<PuzzleMirror>();
+
+			int maxSteps = Mathf.RoundToInt(360.0f / mirrorRotationStep);
+			int initialSteps = UnityEngine.Random.Range(0, maxSteps);
+
+			mirrorComponent.Init(initialSteps, mirrorRotationStep);
+
+			Vector3 normal = mirrorComponent.MirrorNormal;
+			Vector3 reflected = Vector3.Reflect(direction, normal);
+
+			position = mirrorGenPosition;
+			direction = reflected;
+
+			generatedMirrors++;
+		}
+	}
+
+	private bool TryValidFinalMirrorRotation()
+	{
+		// ...
 	}
 
 	private void GenerateRandomPasswordSurface(PuzzlePasswordReceiver ppwdr, Transform componentsAnchor)
@@ -226,7 +281,7 @@ public class RoomGenerator : MonoBehaviour
 		Vector3 normal = hit.normal;
 		Vector3 position = new(hit.point.x, passwordSurfaceVerticalOffset, hit.point.z);
 
-		GameObject temp = Instantiate(passwordDisplayPrefab, position, Quaternion.LookRotation(normal), componentsAnchor);
+		GameObject temp = Instantiate(passwordDisplayPrefab, position, Quaternion.LookRotation(normal, Vector3.up), componentsAnchor);
 		PasswordDisplay pDisp = temp.GetComponentInChildren<PasswordDisplay>();
 
 		pDisp.PasswordText = ppwdr.ExpectedPassword;
