@@ -54,7 +54,7 @@ public class MonsterSummonManager : MonoBehaviour
 
     private void Summon()
     {
-        Debug.Log("¡CORRE HVÓN!");
+        Debug.Log("¡CORRE!");
         spawner.Spawn();
     }
 
