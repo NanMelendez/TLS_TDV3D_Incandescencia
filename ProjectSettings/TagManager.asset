@@ -8,6 +8,15 @@ TagManager:
   - PuzzleComponent
   - GiantMoth
   - GameManager
+  - PanelCodigo
+  - "C\xF3digoCorrecto"
+  - Llave
+  - Engranaje
+  - SalaNueva
+  - LlaveCompleta
+  - PanelLlave
+  - PanelEngranaje
+  - TextoOculto
   layers:
   - Default
   - TransparentFX
